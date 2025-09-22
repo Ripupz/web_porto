@@ -86,7 +86,7 @@ export const workData = [
      {
         title: 'CateringZ',
         description: 'Frontend Development Web based restaurant menu ',
-        bgImage: '/cateringZ.png',
+        bgImage: '/CateringZ.png',
         github:"https://github.com/Ripupz/CateringZ",
     },
     {
