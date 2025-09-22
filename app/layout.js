@@ -1,6 +1,6 @@
 import { Outfit,Ovo } from "next/font/google";
 import "./globals.css";
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 const outfit = Outfit({
@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
         className={`${outfit.className} ${ovo.className} antialiased
           overflow-x-hidden  `}
       >
-        
+        <SpeedInsights />
         {children}
       </body>
     </html>
