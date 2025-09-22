@@ -15,7 +15,7 @@ const About = () => {
             </div>
 
             <div className='flex-1'>
-                <p className='mb-10 max-w-2xl font-Ovo'>I am a blablablabal</p>
+                <p className='mb-10 max-w-2xl font-Ovo'>I’m Rafif, a Machine Learning Developer and Data Scientist based in Indonesia. I specialize in building intelligent systems that turn data into actionable insights, using tools like Python, TensorFlow, and PyTorch.Beyond AI and data science, I enjoy creating clean, functional, and visually appealing web applications that deliver great user experiences.</p>
             <ul className='grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl'>
                 {infoList.map(({icon, iconDark, title, description},index) => (
                     <li className='border-[0.5px] border-gray-400 rounded-xl

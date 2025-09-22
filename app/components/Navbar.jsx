@@ -53,11 +53,11 @@ const Navbar = () => {
 
       <div className='flex items-center gap-4'>
 
-        <button> 
+        {/* <button> 
             <Image src={assets.moon_icon} alt='' className="w-6" />
-        </button>
+        </button> */}
 
-        <a href="#" className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4">
+        <a href="https://www.linkedin.com/in/rafif-adhirajasa-063ba61b7" className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4">
           Connect <Image src={assets.arrow_icon} alt="Arrow Icon" className="w-3" />
         </a>
 

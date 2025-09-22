@@ -35,6 +35,9 @@ import right_arrow from './right-arrow.png';
 import send_icon from './send-icon.png';
 import right_arrow_bold from './right-arrow-bold.png';
 import right_arrow_bold_dark from './right-arrow-bold-dark.png';
+import supabase_logo from './supabase-logo-icon.png';
+import python_logo from './python-logo-only.png'; 
+import pytorch_logo from './Pytorch_logo.png';
 
 export const assets = {
     user_image,
@@ -74,28 +77,31 @@ export const assets = {
     send_icon,
     right_arrow_bold,
     right_arrow_bold_dark,
+    supabase_logo,
+    python_logo,
+    pytorch_logo
 };
 
 export const workData = [
-    {
-        title: 'Frontend project',
-        description: 'Web Design',
-        bgImage: '/work-1.png',
+     {
+        title: 'CateringZ',
+        description: 'Frontend Development Web based restaurant menu ',
+        bgImage: '/cateringZ.png',
     },
     {
-        title: 'Geo based app',
-        description: 'Mobile App',
-        bgImage: '/work-2.png',
+        title: 'Stuggy - Your Study Buddy',
+        description: 'Mobile App Development for a study planner app',
+        bgImage: '/stuggy.png',
     },
     {
-        title: 'Photography site',
-        description: 'Web Design',
-        bgImage: '/work-3.png',
+        title: 'CarsIdentifier - Vehicle Recognition System',
+        description: 'Building a vehicle recognition system using deep learning',
+        bgImage: '/vehicle.png',
     },
     {
-        title: 'UI/UX designing',
-        description: 'UI/UX Design',
-        bgImage: '/work-4.png',
+        title: 'CalCountAI - AI-Powered Calorie Counter',
+        description: 'an AI-powered calorie counter that uses image recognition to estimate calorie content from food images.',
+        bgImage: '/CalCountAI.png',
     },
 ]
 
@@ -107,11 +113,11 @@ export const serviceData = [
 ]
 
 export const infoList = [
-    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, CSS, JavaScript React Js, Next Js' },
-    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'B.Tech in Computer Science' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects' }
+    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'Python, Next JS, C++, Tailwind CSS, JavaScript' },
+    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'Bachelor of Computer Science at Binus University' },
+    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects (Web Apps & non Web Apps)' }
 ];
 
 export const toolsData = [
-    assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git
+    assets.vscode, assets.python_logo, assets.supabase_logo, assets.figma, assets.git, assets.pytorch_logo
 ];
