@@ -5,7 +5,6 @@ This is a personal portfolio project built using **Next.js** and **Tailwind CSS*
 ## Features
 
 - **Responsive Design**: Fully responsive layout for all devices.
-- **Dark Mode**: Toggle between light and dark themes.
 - **Dynamic Components**: Modular and reusable components for easy customization.
 - **Smooth Scrolling**: Smooth navigation between sections.
 - **Vercel Deployment**: Deployed and optimized for performance on Vercel.
