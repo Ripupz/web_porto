@@ -87,21 +87,25 @@ export const workData = [
         title: 'CateringZ',
         description: 'Frontend Development Web based restaurant menu ',
         bgImage: '/cateringZ.png',
+        github:"https://github.com/Ripupz/CateringZ",
     },
     {
         title: 'Stuggy - Your Study Buddy',
         description: 'Mobile App Development for a study planner app',
         bgImage: '/stuggy.png',
+        github:"https://github.com/Ripupz/stuggy_app",
     },
     {
         title: 'CarsIdentifier - Vehicle Recognition System',
         description: 'Building a vehicle recognition system using deep learning',
         bgImage: '/vehicle.png',
+        github:"https://github.com/Ripupz/vehicle-recognition",
     },
     {
         title: 'CalCountAI - AI-Powered Calorie Counter',
         description: 'an AI-powered calorie counter that uses image recognition to estimate calorie content from food images.',
         bgImage: '/CalCountAI.png',
+        github:"https://github.com/Ripupz/CalCountAI",
     },
 ]
 

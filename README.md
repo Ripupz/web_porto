@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio Project
+
+This is a personal portfolio project built using **Next.js** and **Tailwind CSS**. It showcases my skills, projects, and contact information in a modern and responsive design.
+
+## Features
+
+- **Responsive Design**: Fully responsive layout for all devices.
+- **Dark Mode**: Toggle between light and dark themes.
+- **Dynamic Components**: Modular and reusable components for easy customization.
+- **Smooth Scrolling**: Smooth navigation between sections.
+- **Vercel Deployment**: Deployed and optimized for performance on Vercel.
+
+## Technologies Used
+
+- **Next.js**: React framework for server-side rendering and static site generation.
+- **Tailwind CSS**: Utility-first CSS framework for styling.
+- **React**: JavaScript library for building user interfaces.
+
+## Project Structure
+
+```
+portfolio/
+├── app/
+│   ├── components/       # Reusable components (Navbar, About, etc.)
+│   ├── globals.css       # Global styles
+│   ├── layout.js         # Root layout configuration
+│   ├── page.js           # Main entry point
+├── assets/               # Images, videos, and other static assets
+├── public/               # Publicly accessible files
+├── next.config.mjs       # Next.js configuration
+├── package.json          # Project dependencies
+├── postcss.config.mjs    # PostCSS configuration
+├── tailwind.config.js    # Tailwind CSS configuration
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- **Node.js**: Install [Node.js](https://nodejs.org/).
+- **Git**: Install [Git](https://git-scm.com/).
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd portfolio
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the Development Server
+
+Start the development server:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Build the project for production:
+```bash
+npm run build
+```
 
-## Learn More
+Start the production server:
+```bash
+npm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Deploying to Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push your code to GitHub.
+2. Connect your repository to [Vercel](https://vercel.com/).
+3. Deploy the project with one click.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License. Feel free to use and modify it as you like.
