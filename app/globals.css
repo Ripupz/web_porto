@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+
+*{
+  font-family: Outfit;
+}
+.font-Ovo {
+  font-family: Ovo, sans-serif;
+}
+
+.lightHover {
+  color: #fcf4ff;
+}
+
+.darkHover {
+  color: #2a004a;
+}
+
+.darkTheme {
+  color: #11001F;
+}
+
+/* Add this for hover background */
+.hover-bg-lightHover:hover {
+  background-color: #fcf4ff;
+}
+
+.hover-shadow-black:hover {
+  box-shadow: 4px 4px 0 #000;
+}
+
+.hover-shadow-white:hover {
+  box-shadow: 4px 4px 0 #fff;
+}
+
+.navbar-blur {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.7);
+  transition: backdrop-filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.navbar-no-blur {
+  backdrop-filter: blur(0px);
+  background-color: rgba(255, 255, 255, 0);
+  transition: backdrop-filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.custom-navbar-bg {
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Tailwind's shadow-sm */
+  opacity: 0.5; /* Tailwind's bg-opacity-50 */
+  transition: all 0.3s ease; /* Smooth transition */
+}
