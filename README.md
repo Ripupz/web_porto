@@ -75,12 +75,4 @@ Start the production server:
 npm start
 ```
 
-### Deploying to Vercel
 
-1. Push your code to GitHub.
-2. Connect your repository to [Vercel](https://vercel.com/).
-3. Deploy the project with one click.
-
-## License
-
-This project is licensed under the MIT License. Feel free to use and modify it as you like.
