@@ -1,6 +1,7 @@
 import { assets, infoList, toolsData } from '@/assets/assets'
 import Image from 'next/image'
 import React from 'react'
+import { motion } from 'framer-motion'
 
 const About = () => {
   return (
@@ -10,11 +11,26 @@ const About = () => {
 
         <div className='flex w-full flex-col lg:flex-row 
         items-center gap-20 my-20'>
-            <div className='w-64 sm:w-80 rounded-3xl max-w-none'>
-                <Image src={assets.user_image} alt='User Image' className='w-full rounded-3xl'/>
-            </div>
 
-            <div className='flex-1'>
+        {/* Image Section */}
+        <motion.div
+          className='w-64 sm:w-80 rounded-3xl max-w-none'
+          initial={{ opacity: 0, x: -100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, type: 'spring', bounce: 0.4 }}
+          viewport={{ amount: 0.5 }}
+        >
+            <Image src={assets.user_image} alt='User Image' className='w-full rounded-3xl'/>
+        </motion.div>
+
+        {/* Text Section */}
+        <motion.div
+          className='flex-1'
+          initial={{ opacity: 0, x: 25 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, type: 'spring', bounce: 0.4 }}
+          viewport={{ amount: 0.5 }}
+        >
                 <p className='mb-10 max-w-2xl font-Ovo'>I’m Rafif, a Machine Learning Developer and Data Scientist based in Indonesia. I specialize in building intelligent systems that turn data into actionable insights, using tools like Python, TensorFlow, and PyTorch.Beyond AI and data science, I enjoy creating clean, functional, and visually appealing web applications that deliver great user experiences.</p>
             <ul className='grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl'>
                 {infoList.map(({icon, iconDark, title, description},index) => (
@@ -37,7 +53,7 @@ const About = () => {
                     ))}
                 </ul>
 
-            </div>
+            </motion.div>
         </div>
     </div>
   )
