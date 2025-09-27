@@ -19,6 +19,7 @@ const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, type: 'spring', bounce: 0.4 }}
           viewport={{ amount: 0.5 }}
+          whileHover={{rotateZ: 20, scale: 1.05}}
         >
             <Image src={assets.user_image} alt='User Image' className='w-full rounded-3xl'/>
         </motion.div>
