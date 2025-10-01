@@ -50,10 +50,11 @@ const Header = () => {
             />
           </a>
           <a
-            href="https://www.linkedin.com/in/rafif-adhirajasa-063ba61b7"
+            href="/my-resume.pdf"
             className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2"
+            download={"my-resume.pdf"}
           >
-            My linkedin{' '}
+            My Resume{' '}
             <Image
               src={assets.arrow_icon}
               alt="right blackarrow"
