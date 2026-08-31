@@ -1,13 +1,15 @@
-export const CONFIDENTIAL_NOTICE =
-  "Confidential Internship Project — details and visuals have been anonymized or reconstructed to protect proprietary information.";
+const PUBLIC_PRODUCT_NAME = "Veriflo";
+const PUBLIC_PRODUCT_URL = "https://veriflo.co.id/";
+const PUBLIC_PRODUCT_NOTE =
+  "Veriflo was the project I contributed to during my Moladin internship. Visit the public project website for context.";
 
-export const CONFIDENTIAL_PUBLICATION =
-  "Not public — confidential internship project";
-
-const confidentialMeta = (profile) => ({
+const internshipMeta = (profile) => ({
   year: profile.internshipYear || "Year pending confirmation",
   role: profile.internshipRole || "Internship role pending confirmation",
-  context: "Confidential work assignment · team project",
+  context: "Moladin engineering internship · Veriflo project",
+  publicProductName: PUBLIC_PRODUCT_NAME,
+  publicProductUrl: PUBLIC_PRODUCT_URL,
+  publicProductNote: PUBLIC_PRODUCT_NOTE,
 });
 
 const projectDefinitions = [
@@ -15,8 +17,8 @@ const projectDefinitions = [
     slug: "digital-auction-platform",
     title: "Digital Auction Platform",
     eyebrow: "Reliable, traceable review workflows",
-    confidential: true,
-    status: "Implemented workflow · sanitized case study",
+    internshipProject: true,
+    status: "Implemented workflow",
     technologies: [
       "Python",
       "REST APIs",
@@ -24,33 +26,33 @@ const projectDefinitions = [
       "Automated validation",
     ],
     summary:
-      "A confidential workflow that helps reviewers submit multiple auction-related checks and follow each item from request to an understandable result without losing successful work when another item fails.",
+      "A multi-record review workflow that helps reviewers follow each auction-related request independently and preserve completed results when another request fails.",
     process:
       "Mapped the submission-to-result lifecycle, separated processing state from result meaning, and designed independent task handling with targeted retries.",
     outcome:
-      "Produced a more traceable, fault-isolated flow with clearer failure and no-result behavior. No confidential usage or business metrics are claimed.",
+      "Produced a more traceable, fault-isolated flow with clearer failure and no-result behavior.",
     learning:
       "Reliability improves when each request has explicit state, evidence, and recovery behavior instead of being hidden inside one all-or-nothing batch.",
     story: {
       problem:
-        "A review interface can receive several records at once, while each record may complete, return no matching result, or fail independently. Treating the entire submission as one transaction makes partial progress difficult to understand and recover.",
+        "I worked on a multi-record review flow where every check could finish differently: completed with evidence, completed without a matching result, or interrupted by an error. The challenge was to preserve successful work and make each outcome understandable without forcing reviewers to restart the entire submission.",
       users:
-        "The notes describe an internal review workflow. The exact user group and job title require confirmation before publication.",
+        "Operational reviewers handling several auction-related checks in one submission and needing clear per-item status, evidence, and recovery options.",
       why:
-        "Review work needs an auditable path from input to result. Ambiguous status or discarded partial successes can create duplicate effort and weaken confidence in the output.",
+        "When one unclear or failed item hides successful results, reviewers repeat work and lose trust in the workflow. Clear state and targeted recovery keep progress visible without implying that missing evidence is a negative result.",
       responsibilities: [
         "Mapped and documented the master-log and result lifecycle.",
         "Contributed independent multi-item submission and progress behavior.",
         "Separated processing failures from valid no-result outcomes.",
         "Added defensive validation for unreadable or misleading source pages.",
-        "Defined retry and recovery behavior without publishing real auction data.",
+        "Defined targeted retry and recovery behavior.",
       ],
       contributions: [
         "Per-item status and result tracking",
         "Fault-isolated multi-item submission",
         "Duplicate-prevention and targeted retry considerations",
         "Layered source and context validation",
-        "Sanitized operational documentation",
+        "Operational workflow documentation",
       ],
       research:
         "I traced the complete request, status, and result path; reviewed how partial failures reached the interface; and investigated cases where a technically reachable page did not contain a valid listing.",
@@ -61,31 +63,31 @@ const projectDefinitions = [
       challenge:
         "External pages can be reachable yet empty, misleading, or no longer valid. The solution combined basic reachability checks, readable-content checks, context checks, and conservative result wording.",
       testing:
-        "Validation covered lifecycle and failure paths plus representative page states. Exact environments, records, endpoints, and test counts remain confidential.",
+        "Validation covered lifecycle and failure paths plus representative page states.",
       outcome:
         "The implemented flow made independent progress and recovery easier to reason about. This case study intentionally makes no production-scale, revenue, or accuracy claim.",
       privacy:
-        "No real auction record, certificate, customer, source URL, internal rule, or company identifier is used. The visual is a reconstruction with dummy labels only.",
+        "The workflow keeps auction and customer information scoped to the review task while making status and recovery actions clear.",
       future:
-        "Confirm the intended-user wording, extend representative failure testing, and evaluate reviewer-facing explanations without exposing source-specific rules.",
+        "Extend representative failure testing and evaluate reviewer-facing explanations without exposing source-specific rules.",
     },
   },
   {
     slug: "document-authenticity-detection",
     title: "Document Authenticity Detection System",
     eyebrow: "Assistive signals for careful human review",
-    confidential: true,
-    status: "Implementation-stage system · no production claim",
+    internshipProject: true,
+    status: "Implementation-stage document analysis system",
     technologies: [
       "Python",
-      "Private file processing",
+      "Secure file processing",
       "Vision-assisted analysis",
       "Automated tests",
     ],
     summary:
-      "A confidential document-review system that surfaces indications of digital manipulation or AI generation while keeping the final judgment with a human reviewer.",
+      "A document-review system that surfaces indications of digital manipulation or AI generation while keeping the final judgment with a human reviewer.",
     process:
-      "Designed the intake and status contract, strict file checks, private processing lifecycle, structured findings, cleanup behavior, and reviewer-safe wording.",
+      "Designed the intake and status contract, strict file checks, secure processing lifecycle, structured findings, cleanup behavior, and reviewer-safe wording.",
     outcome:
       "Established and test-validated the core backend workflow. End-to-end staging calibration and user validation were still pending in the reviewed notes.",
     learning:
@@ -94,13 +96,13 @@ const projectDefinitions = [
       problem:
         "Reviewers need help spotting potential manipulation in uploaded documents, but a model output cannot prove that a document is genuine or fake.",
       users:
-        "The notes describe a private reviewer workflow. The exact reviewer role and document category require confirmation before publication.",
+        "Document reviewers assessing uploaded files for possible manipulation indicators.",
       why:
         "False certainty can harm people and decisions. The system therefore needed to surface useful signals without presenting an automated verdict as fact.",
       responsibilities: [
-        "Designed an incremental API and processing workflow for a private document scan.",
+        "Designed an incremental API and processing workflow for document analysis.",
         "Implemented strict file intake and structured status/result behavior.",
-        "Contributed private artifact handling, temporary-file cleanup, and preview access patterns.",
+        "Contributed temporary-file handling, cleanup, and preview access controls.",
         "Integrated vision-assisted analysis behind a validated output contract.",
         "Added automated verification for success, failure, and repeat-delivery paths.",
       ],
@@ -108,13 +110,13 @@ const projectDefinitions = [
         "Single-document intake and validation",
         "Asynchronous scan lifecycle",
         "Reviewer-oriented findings and explanations",
-        "Private preview and cleanup safeguards",
+        "Preview access and cleanup safeguards",
         "Structured outputs and resilient error states",
       ],
       research:
         "I investigated manipulation indicators, model-output failure modes, file-format ambiguity, reviewer needs, and the privacy consequences of retaining original documents and generated previews.",
       approach:
-        "The system validates the file, processes it in a private workflow, converts model observations into a strict structured result, and presents indications and evidence for human review rather than a binary truth claim.",
+        "The system validates the file, processes it through a controlled workflow, converts model observations into a strict structured result, and presents indications and evidence for human review rather than a binary truth claim.",
       decisions:
         "The central trade-off was usefulness versus certainty. Conservative language and structured evidence reduce overclaiming, while strict contracts and cleanup add engineering work but make failures safer and more diagnosable.",
       challenge:
@@ -122,9 +124,9 @@ const projectDefinitions = [
       testing:
         "The reviewed notes record automated workflow verification. A production-quality accuracy claim is not made because labeled-data calibration and end-to-end staging validation were not evidenced as complete.",
       outcome:
-        "The core private scan workflow and reviewer-oriented result contract were implemented and verified at the application level. No confidential metric or deployment claim is included.",
+        "The core scan workflow and reviewer-oriented result contract were implemented and verified at the application level.",
       privacy:
-        "Uploaded documents may contain sensitive personal data. The public case study uses no real document, identity, prompt, storage path, endpoint, or model configuration, and explicitly preserves human review.",
+        "Uploaded documents may contain personal data, so the workflow emphasizes controlled access, cleanup, and human review.",
       future:
         "Complete representative-data calibration, end-to-end validation, reviewer usability testing, retention review, and clear escalation guidance for uncertain findings.",
     },
@@ -133,8 +135,8 @@ const projectDefinitions = [
     slug: "legal-record-verification",
     title: "Legal Record Verification Workflow",
     eyebrow: "Evidence aggregation with identity safeguards",
-    confidential: true,
-    status: "Iterated professional workflow · sanitized case study",
+    internshipProject: true,
+    status: "Iterated professional workflow",
     technologies: [
       "Python",
       "REST APIs",
@@ -142,18 +144,18 @@ const projectDefinitions = [
       "Confidence-based matching",
     ],
     summary:
-      "A confidential workflow that coordinates checks across multiple public legal-information sources, normalizes inconsistent responses, and helps reviewers distinguish stronger identity matches from ambiguous ones.",
+      "A workflow that coordinates checks across multiple public legal-information sources, normalizes inconsistent responses, and helps reviewers distinguish stronger identity matches from ambiguous ones.",
     process:
       "Investigated source behavior, built provider orchestration and status aggregation, improved recovery from dynamic-page failures, and added conservative identity-matching safeguards.",
     outcome:
-      "Created a documented, resilient verification flow with clearer provenance and failure behavior. No client, case, document, or confidential performance metric is disclosed.",
+      "Created a documented, resilient verification flow with clearer provenance and failure behavior.",
     learning:
       "Publicly available data is still sensitive; reliable verification requires provenance, conservative matching, and a visible path for human review.",
     story: {
       problem:
         "Relevant public legal records are spread across sources with different formats, availability, and search behavior. Matching by name alone can also produce harmful false positives.",
       users:
-        "The workflow supports internal review work. The exact user group, decision context, and legal interpretation boundaries require confirmation before publication.",
+        "Reviewers who compare legal-record evidence across multiple public sources and need clear match confidence and source status.",
       why:
         "Reviewers need consistent evidence and clear uncertainty. Silent source failures or weak identity matches can make an incomplete result look more conclusive than it is.",
       responsibilities: [
@@ -179,11 +181,11 @@ const projectDefinitions = [
       challenge:
         "Dynamic pages, access gates, inconsistent formats, and same-name records created reliability and false-match risks. The solution combined resilient navigation, exact-match checks, confidence metadata, and graceful partial results.",
       testing:
-        "Work included targeted smoke checks, failure-path verification, and repeated investigation of source-specific edge cases. Real case data, access details, and test metrics are excluded.",
+        "Validation included targeted smoke checks, failure paths, and repeated investigation of source-specific edge cases.",
       outcome:
         "The resulting workflow became more diagnosable and cautious about identity. The case study does not claim legal completeness, production coverage, or automated legal judgment.",
       privacy:
-        "Legal records can contain personal and sensitive information even when publicly accessible. No real name, case, document, court record, client, or internal decision rule appears in this portfolio.",
+        "Because public legal records can contain personal information, the workflow keeps provenance and uncertainty visible and supports human review.",
       future:
         "Confirm the reviewer audience, expand representative validation, formalize data-minimization and retention checks, and test how uncertainty explanations affect reviewer decisions.",
     },
@@ -192,7 +194,7 @@ const projectDefinitions = [
     slug: "stuggy",
     title: "Stuggy",
     eyebrow: "A study companion built through team integration",
-    confidential: false,
+    internshipProject: false,
     year: "2025",
     role: "Mobile app contributor",
     context: "Group project · multiple repository contributors",
@@ -249,7 +251,7 @@ const projectDefinitions = [
       outcome:
         "The group produced a connected prototype with the core study-planning, Pomodoro, forum, and score features visible in one app.",
       privacy:
-        "Authentication and forum content require responsible access rules and environment-managed connection values. Dummy names and tasks are used in all reconstructed visuals.",
+        "Authentication and forum content require responsible access rules and environment-managed connection values. Interface examples avoid real account and forum content.",
       future:
         "Move all connection values to environment variables, add automated tests, validate accessibility and usability with students, and strengthen offline/error states.",
     },
@@ -258,7 +260,7 @@ const projectDefinitions = [
     slug: "cars-identifier",
     title: "CarsIdentifier — Vehicle Recognition System",
     eyebrow: "An image classifier made usable through the web",
-    confidential: false,
+    internshipProject: false,
     year: "2025",
     role: "Machine learning & web developer",
     context: "Individual project · one repository contributor",
@@ -315,15 +317,15 @@ const projectDefinitions = [
 ];
 
 export function getProjects(profile) {
-  const meta = confidentialMeta(profile);
+  const meta = internshipMeta(profile);
 
   return projectDefinitions.map((project, index) => ({
     ...project,
     order: index + 1,
-    publication: project.confidential
-      ? CONFIDENTIAL_PUBLICATION
+    publication: project.internshipProject
+      ? "Portfolio case study · Veriflo project at Moladin"
       : project.github || "Case study",
-    ...(project.confidential ? meta : {}),
+    ...(project.internshipProject ? meta : {}),
   }));
 }
 

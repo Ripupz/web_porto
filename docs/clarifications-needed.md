@@ -15,11 +15,13 @@ Enter personal answers only in the ignored local `.env`. Do not add them to this
 
 Optional portrait URLs can be supplied through `PORTFOLIO_PROFILE_IMAGE_URL` and `PORTFOLIO_ABOUT_IMAGE_URL`. Do not recommit personal image files.
 
-Keep `INTERNSHIP_COMPANY` blank unless publication is separately approved.
+Keep `INTERNSHIP_COMPANY` blank. The approved Moladin internship and Veriflo project attribution is supplied by the public project data instead.
+
+The portfolio owner clarified on 2026-08-31 that Moladin is the internship company and Veriflo is the project name. The owner approved displaying that attribution on all three internship projects and linking `https://veriflo.co.id/`, while leaving `INTERNSHIP_COMPANY` unchanged.
 
 ## Project facts that need confirmation
 
-- Internship duration for each of the three confidential projects
+- Internship duration for each of the three internship projects
 - Whether one internship role title applies to all three projects
 - Exact intended-user wording for each internship project
 - Team context beyond “team project,” if a safe description is desired

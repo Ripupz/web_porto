@@ -1,5 +1,5 @@
 import ProjectVisual from "@/app/components/ProjectVisual";
-import { CONFIDENTIAL_NOTICE, getProjects } from "@/app/data/projects";
+import { getProjects } from "@/app/data/projects";
 import { getContactLine, getProfile, getStudentLine } from "@/app/lib/profile";
 
 export const dynamic = "force-dynamic";
@@ -43,6 +43,11 @@ export default function AcademyPortfolioPage() {
                 <PdfField label="Role / position">{project.role}</PdfField>
                 <PdfField label="Context">{project.context}</PdfField>
                 <PdfField label="Publication">{project.publication}</PdfField>
+                {project.publicProductUrl ? (
+                  <PdfField label="Public product">
+                    <a href={project.publicProductUrl}>{project.publicProductName} · veriflo.co.id</a>
+                  </PdfField>
+                ) : null}
                 <PdfField label="Status">{project.status}</PdfField>
               </dl>
               <div className="pdf-tech">
@@ -52,7 +57,6 @@ export default function AcademyPortfolioPage() {
             </div>
 
             <div className="academy-page__story">
-              {project.confidential ? <p className="pdf-confidential">{CONFIDENTIAL_NOTICE}</p> : null}
               <section className="pdf-summary">
                 <h2>Project description</h2>
                 <p>{project.summary}</p>

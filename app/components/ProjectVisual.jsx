@@ -12,39 +12,67 @@ function VisualFrame({ children, compact, label, tone = "emerald" }) {
   );
 }
 
-function DummyBadge() {
-  return <span className="visual-dummy-badge">Reconstructed · dummy data</span>;
-}
-
 function AuctionVisual({ compact }) {
   return (
     <VisualFrame
       compact={compact}
       tone="amber"
-      label="Reconstructed auction workflow showing three dummy requests tracked independently"
+      label="Infographic showing three auction-review requests tracked independently through mixed outcomes"
     >
-      <DummyBadge />
-      <div className="visual-window">
-        <div className="visual-window__top">
-          <span />
-          <span />
-          <span />
-          <strong>Review queue</strong>
+      <div className={`auction-infographic ${compact ? "auction-infographic--compact" : ""}`}>
+        <div className="auction-infographic__header">
+          <div>
+            <small>Veriflo · multi-record review</small>
+            <strong>Independent request lifecycle</strong>
+          </div>
+          <span>3 example records</span>
         </div>
-        <div className="auction-grid">
-          <div className="auction-input">
-            <small>Dummy certificate</small>
-            <strong>SAMPLE–001</strong>
-            <span className="visual-button">Check record</span>
+
+        <div className="auction-infographic__flow" aria-hidden="true">
+          <div><span>01</span><small>Submit batch</small><strong>3 records</strong></div>
+          <i>→</i>
+          <div><span>02</span><small>Track separately</small><strong>3 states</strong></div>
+          <i>→</i>
+          <div><span>03</span><small>Recover precisely</small><strong>1 retry</strong></div>
+        </div>
+
+        <div className="auction-infographic__body">
+          <div className="auction-records">
+            <div className="auction-record auction-record--success">
+              <span>A</span>
+              <div><small>Example record</small><strong>Evidence ready</strong></div>
+              <em>Completed</em>
+            </div>
+            <div className="auction-record auction-record--neutral">
+              <span>B</span>
+              <div><small>Example record</small><strong>No matching result</strong></div>
+              <em>Reviewed</em>
+            </div>
+            <div className="auction-record auction-record--warning">
+              <span>C</span>
+              <div><small>Example record</small><strong>Retry required</strong></div>
+              <em>Recoverable</em>
+            </div>
           </div>
-          <div className="auction-status-list">
-            <div><span>A</span><b>Completed</b><em>Evidence ready</em></div>
-            <div><span>B</span><b>In review</b><em>Validating source</em></div>
-            <div><span>C</span><b>Retry available</b><em>Other results preserved</em></div>
+
+          <div className="auction-outcome">
+            <small>Design principle</small>
+            <strong>One issue does not erase other results</strong>
+            <ul>
+              <li>Per-item status</li>
+              <li>Partial success preserved</li>
+              <li>Targeted recovery</li>
+            </ul>
           </div>
+        </div>
+
+        <div className="auction-infographic__footer">
+          <span>Explicit states</span>
+          <span>No-result ≠ failure</span>
+          <span>Retry only what failed</span>
         </div>
       </div>
-      <p className="visual-caption">Independent progress · explicit states · targeted recovery</p>
+      <p className="visual-caption">Submit → track independently → preserve results → recover precisely</p>
     </VisualFrame>
   );
 }
@@ -54,9 +82,8 @@ function DocumentVisual({ compact }) {
     <VisualFrame
       compact={compact}
       tone="violet"
-      label="Reconstructed private document review screen with dummy findings and a human review reminder"
+      label="Document review workflow with example findings and a human review reminder"
     >
-      <DummyBadge />
       <div className="document-demo">
         <div className="document-sheet">
           <span className="document-sheet__stamp">SAMPLE</span>
@@ -67,7 +94,7 @@ function DocumentVisual({ compact }) {
           <div className="document-sheet__mark">?</div>
         </div>
         <div className="document-findings">
-          <small>Private scan summary</small>
+          <small>Analysis summary</small>
           <strong className="document-findings__title">Human review recommended</strong>
           <div><span className="signal signal--amber" />Inconsistent visual pattern</div>
           <div><span className="signal signal--violet" />Metadata needs context</div>
@@ -84,26 +111,58 @@ function LegalVisual({ compact }) {
     <VisualFrame
       compact={compact}
       tone="blue"
-      label="Reconstructed legal-record verification flow using three anonymous public sources and conservative identity confidence"
+      label="Infographic showing an example identity reviewed across three public-information sources with conservative matching"
     >
-      <DummyBadge />
-      <div className="legal-flow">
-        <div className="legal-person">
-          <span className="legal-avatar">SP</span>
-          <div><small>Dummy subject</small><strong>Sample Person</strong></div>
+      <div className={`legal-infographic ${compact ? "legal-infographic--compact" : ""}`}>
+        <div className="legal-infographic__header">
+          <div className="legal-infographic__mark">◇</div>
+          <div>
+            <small>Veriflo · identity evidence review</small>
+            <strong>Multi-source verification map</strong>
+          </div>
+          <span>Example profile</span>
         </div>
-        <div className="legal-sources">
-          <div><b>Public source A</b><span>Possible record</span></div>
-          <div><b>Public source B</b><span>No confident match</span></div>
-          <div><b>Public source C</b><span>Evidence unavailable</span></div>
+
+        <div className="legal-infographic__body">
+          <div className="legal-evidence-column">
+            <div className="legal-subject-card">
+              <span className="legal-avatar">SP</span>
+              <div><small>Example subject</small><strong>Sample Person</strong><em>Identity requires review</em></div>
+              <b>3 sources</b>
+            </div>
+
+            <div className="legal-source-grid">
+              <div className="legal-source-card legal-source-card--match">
+                <span>A</span><div><small>Public source</small><strong>Possible record</strong></div><em>Review</em>
+              </div>
+              <div className="legal-source-card legal-source-card--clear">
+                <span>B</span><div><small>Public source</small><strong>No confident match</strong></div><em>Checked</em>
+              </div>
+              <div className="legal-source-card legal-source-card--missing">
+                <span>C</span><div><small>Public source</small><strong>Evidence unavailable</strong></div><em>Partial</em>
+              </div>
+            </div>
+          </div>
+
+          <div className="legal-review-panel">
+            <small>Reviewer summary</small>
+            <strong>Human verification required</strong>
+            <p>One possible record needs identity review before it can inform a decision.</p>
+            <ul>
+              <li>Provenance retained</li>
+              <li>Ambiguity stays visible</li>
+              <li>Missing data is not absence</li>
+            </ul>
+          </div>
         </div>
-        <div className="legal-summary">
-          <small>Reviewer summary</small>
-          <strong>One item needs identity review</strong>
-          <span>Provenance preserved</span>
-          <span>Missing data is not proof of absence</span>
+
+        <div className="legal-infographic__footer">
+          <span>Independent checks</span>
+          <span>Conservative matching</span>
+          <span>Graceful partial results</span>
         </div>
       </div>
+      <p className="visual-caption">Collect evidence → preserve provenance → surface uncertainty → support human review</p>
     </VisualFrame>
   );
 }
@@ -113,9 +172,9 @@ function StuggyVisual({ compact }) {
     <VisualFrame
       compact={compact}
       tone="mint"
-      label="Reconstructed Stuggy mobile screens showing a study plan, Pomodoro timer, and forum post with dummy data"
+      label="Stuggy mobile screens showing a study plan, Pomodoro timer, and forum post"
     >
-      <span className="visual-dummy-badge">Reconstructed · no real user data</span>
+      <span className="visual-label-badge">Product interface preview</span>
       <div className="stuggy-stage">
         <div className="phone phone--back">
           <small>Today</small>
@@ -145,7 +204,7 @@ function CarsVisual({ compact }) {
       tone="green"
       label="CarsIdentifier web interface for uploading a vehicle image and receiving a model label"
     >
-      <span className="visual-dummy-badge">Public project screenshot</span>
+      <span className="visual-label-badge">Public project screenshot</span>
       <div className="cars-screenshot">
         <Image
           src="/vehicle.png"

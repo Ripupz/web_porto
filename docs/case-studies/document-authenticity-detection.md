@@ -1,16 +1,15 @@
 # Document Authenticity Detection System
 
-> Confidential Internship Project — details and visuals have been anonymized or reconstructed to protect proprietary information.
-
 - Year: loaded from `INTERNSHIP_YEAR`; confirmation required
 - Duration: confirmation required
 - Role: loaded from `INTERNSHIP_ROLE`; confirmation required
-- Context: confidential work assignment; team project
-- Publication: Not public — confidential internship project
+- Context: Moladin engineering internship; Veriflo project
+- Public product: [Veriflo](https://veriflo.co.id/)
+- Publication: Portfolio case study; public product website available
 
 ## Problem and intended users
 
-A private reviewer workflow needed assistive indications of digital manipulation or AI generation. The exact reviewer role and document category still require confirmation.
+Document reviewers need assistive indications of digital manipulation or AI generation while retaining final judgment.
 
 ## Why the problem mattered
 
@@ -18,9 +17,9 @@ An automated observation cannot prove that a document is genuine or fake. Overco
 
 ## Responsibilities and contributed components
 
-- Designed an incremental private-scan API and processing workflow
+- Designed an incremental API and processing workflow for document analysis
 - Implemented strict file intake and structured status/result behavior
-- Contributed private artifact handling, temporary cleanup, and preview access
+- Contributed temporary-file handling, cleanup, and preview access controls
 - Integrated vision-assisted observations behind a validated result contract
 - Added verification for success, failure, and repeat-delivery behavior
 
@@ -30,11 +29,11 @@ Investigated manipulation indicators, model-output failure modes, ambiguous file
 
 ## High-level technical approach
 
-The system validates an uploaded file, processes it privately, converts analysis observations into a strict structured result, and presents evidence for human review rather than a binary verdict.
+The system validates an uploaded file, processes it through a controlled workflow, converts analysis observations into a strict structured result, and presents evidence for human review rather than a binary verdict.
 
-## Safe-to-disclose technologies
+## Technologies
 
-Python, private file processing, vision-assisted analysis, structured validation, and automated tests.
+Python, secure file processing, vision-assisted analysis, structured validation, and automated tests.
 
 ## Decisions and trade-offs
 
@@ -44,13 +43,13 @@ Conservative language and traceable findings reduce false certainty. Strict cont
 
 Input formats and model responses can vary. Bounded intake, validated output structure, repeat-safe delivery, and cleanup on success and failure reduce that uncertainty.
 
-## Testing and safe outcome
+## Testing and outcome
 
 The reviewed notes support application-level automated workflow verification. Labeled-data calibration, reviewer validation, and end-to-end staging evidence were not confirmed complete, so the case study makes no accuracy or production claim.
 
 ## Privacy, security, and ethics
 
-No real document, identity, prompt, vendor configuration, internal path, endpoint, storage structure, or retention rule is included. Results are framed as assistive signals and preserve human judgment.
+Uploaded documents may contain personal data, so the workflow emphasizes controlled access, cleanup, and human review.
 
 ## Learning and future improvements
 

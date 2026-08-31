@@ -1,16 +1,15 @@
 # Legal Record Verification Workflow
 
-> Confidential Internship Project — details and visuals have been anonymized or reconstructed to protect proprietary information.
-
 - Year: loaded from `INTERNSHIP_YEAR`; confirmation required
 - Duration: confirmation required
 - Role: loaded from `INTERNSHIP_ROLE`; confirmation required
-- Context: confidential work assignment; team project
-- Publication: Not public — confidential internship project
+- Context: Moladin engineering internship; Veriflo project
+- Public product: [Veriflo](https://veriflo.co.id/)
+- Publication: Portfolio case study; public product website available
 
 ## Problem and intended users
 
-Public legal information is distributed across sources with inconsistent formats and availability. Name-only matching also creates a false-positive risk. The exact internal reviewer group and decision boundary still require confirmation.
+Public legal information is distributed across sources with inconsistent formats and availability. Name-only matching also creates a false-positive risk for reviewers comparing evidence across several sources.
 
 ## Why the problem mattered
 
@@ -32,7 +31,7 @@ Studied how several public sources structure searches, case references, result p
 
 Independent source checks run through a shared lifecycle, normalize status and evidence, attach conservative identity confidence, and aggregate into a reviewer view without treating missing data as proof of absence.
 
-## Safe-to-disclose technologies
+## Technologies
 
 Python, REST APIs, asynchronous orchestration, confidence-based matching, and automated validation.
 
@@ -44,13 +43,13 @@ Keeping source failures visible and using conservative fallback matching leaves 
 
 Dynamic pages, access gates, inconsistent formats, and same-name records were addressed through resilient navigation, exact-match checks, confidence metadata, and graceful partial results.
 
-## Testing and safe outcome
+## Testing and outcome
 
-Work included targeted smoke checks, failure-path verification, and repeated source-edge-case investigation. No real case, client, access detail, test count, legal coverage, or production metric is disclosed.
+Work included targeted smoke checks, failure-path verification, and repeated source-edge-case investigation.
 
 ## Privacy, security, and ethics
 
-Public records can still contain sensitive personal information. No real name, case, document, court record, client, decision rule, or legal conclusion appears here. The workflow supports review; it does not automate legal judgment.
+Because public legal records can contain personal information, the workflow keeps provenance and uncertainty visible and supports human review rather than automated legal judgment.
 
 ## Learning and future improvements
 

@@ -1,9 +1,5 @@
 import ProjectVisual from "@/app/components/ProjectVisual";
-import {
-  CONFIDENTIAL_NOTICE,
-  getProject,
-  getProjectSlugs,
-} from "@/app/data/projects";
+import { getProject, getProjectSlugs } from "@/app/data/projects";
 import { getProfile } from "@/app/lib/profile";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -55,10 +51,6 @@ export default async function ProjectPage({ params }) {
             <h1>{project.title}</h1>
             <p className="case-summary">{project.summary}</p>
 
-            {project.confidential ? (
-              <div className="confidential-banner">{CONFIDENTIAL_NOTICE}</div>
-            ) : null}
-
             <dl className="case-meta">
               <div><dt>Year</dt><dd>{project.year}</dd></div>
               <div><dt>Role</dt><dd>{project.role}</dd></div>
@@ -75,6 +67,19 @@ export default async function ProjectPage({ params }) {
               <a className="case-primary-link" href={project.github} target="_blank" rel="noopener noreferrer">
                 View public repository ↗
               </a>
+            ) : null}
+            {project.publicProductUrl ? (
+              <a
+                className="case-primary-link"
+                href={project.publicProductUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View {project.publicProductName} ↗
+              </a>
+            ) : null}
+            {project.publicProductNote ? (
+              <p className="case-source-note">{project.publicProductNote}</p>
             ) : null}
             {project.sourceNote ? <p className="case-source-note">{project.sourceNote}</p> : null}
           </div>
@@ -118,7 +123,7 @@ export default async function ProjectPage({ params }) {
             <p>{project.story.testing}</p>
           </StorySection>
 
-          <StorySection title="Safe outcome">
+          <StorySection title="Outcome">
             <p>{project.story.outcome}</p>
           </StorySection>
 
@@ -138,7 +143,7 @@ export default async function ProjectPage({ params }) {
 
       <footer className="case-footer">
         <Link href="/#works">Back to selected projects</Link>
-        <span>No proprietary source code or real records are included.</span>
+        <span>Explore the other projects in this portfolio.</span>
       </footer>
     </main>
   );

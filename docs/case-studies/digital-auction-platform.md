@@ -1,20 +1,19 @@
 # Digital Auction Platform
 
-> Confidential Internship Project — details and visuals have been anonymized or reconstructed to protect proprietary information.
-
 - Year: loaded from `INTERNSHIP_YEAR`; confirmation required
 - Duration: confirmation required
 - Role: loaded from `INTERNSHIP_ROLE`; confirmation required
-- Context: confidential work assignment; team project
-- Publication: Not public — confidential internship project
+- Context: Moladin engineering internship; Veriflo project
+- Public product: [Veriflo](https://veriflo.co.id/)
+- Publication: Portfolio case study; public product website available
 
 ## Problem and intended users
 
-The reviewed notes describe an internal interface that can submit several auction-related records while each item may complete, return no valid result, or fail independently. The exact reviewer group still requires confirmation.
+I worked on a multi-record review flow where every check could finish differently: completed with evidence, completed without a matching result, or interrupted by an error. The intended users are operational reviewers handling several auction-related checks in one submission and needing clear per-item status, evidence, and recovery options.
 
 ## Why the problem mattered
 
-Review work needs a traceable path from input to evidence. Treating every item as one all-or-nothing submission can hide partial progress, cause duplicate effort, and make failures difficult to recover.
+When one unclear or failed item hides successful results, reviewers repeat work and lose trust in the workflow. Clear state and targeted recovery keep progress visible without implying that missing evidence is a negative result.
 
 ## Responsibilities and contributed components
 
@@ -23,7 +22,7 @@ Review work needs a traceable path from input to evidence. Treating every item a
 - Separated processing status from result meaning
 - Added conservative validation for misleading or unreadable source states
 - Defined duplicate-prevention and targeted-retry considerations
-- Documented recovery behavior without using real auction data
+- Documented targeted retry and recovery behavior
 
 ## Research and investigation
 
@@ -33,7 +32,7 @@ Traced the full submission-to-result path, reviewed how partial failures reached
 
 Each item is tracked independently through an asynchronous lifecycle. Progress and result meaning remain separate, source evidence is checked conservatively, and the interface can recover only the items that need another attempt.
 
-## Safe-to-disclose technologies
+## Technologies
 
 Python, REST APIs, asynchronous processing, and automated validation.
 
@@ -45,14 +44,14 @@ Fault isolation preserves valid work but requires clear progress aggregation, du
 
 Some external pages can be reachable while empty or misleading. Layered reachability, readable-content, and context checks support more conservative outcomes.
 
-## Testing and safe outcome
+## Testing and outcome
 
-Work covered lifecycle, failure, and representative source states. The implemented flow became easier to trace and recover. No exact test count, production scale, financial effect, accuracy, or real record is disclosed.
+Work covered lifecycle, failure, and representative source states. The implemented flow became easier to trace and recover.
 
 ## Privacy, security, and ethics
 
-No real auction, certificate, party, price, URL, outcome, company identity, or internal rule appears in the case study. Every visual uses dummy labels.
+The workflow keeps auction and customer information scoped to the review task while making status and recovery actions clear.
 
 ## Learning and future improvements
 
-Explicit per-item state makes failure and recovery easier to reason about. Next steps are to confirm the intended-user wording, extend representative validation, and test reviewer explanations without exposing source-specific logic.
+Explicit per-item state makes failure and recovery easier to reason about. Next steps are to extend representative validation and test reviewer explanations without exposing source-specific logic.

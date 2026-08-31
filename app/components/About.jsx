@@ -14,7 +14,7 @@ export default function About({ profile }) {
     {
       icon: assets.edu_icon,
       title: "Education",
-      description: profile.university || "University information is set privately at build time",
+      description: profile.university || "University information is set at build time",
     },
     {
       icon: assets.project_icon,
