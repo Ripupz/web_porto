@@ -1,70 +1,63 @@
-'use client'
-import { assets } from '@/assets/assets';
-import Image from 'next/image';
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+"use client";
 
-const Header = () => {
-  const ref = useRef(null); // Reference to the header element
-  const isInView = useInView(ref, { once: false, amount: 0.5 }); // Trigger when 50% of the header is in view
+import { assets } from "@/assets/assets";
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+export default function Header({ profile }) {
+  const greeting = profile.fullName
+    ? `Hi! I'm ${profile.fullName}`
+    : "Hi! I build thoughtful digital products";
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, scale: 0 }}
-      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-      transition={{
-        duration: 0.4,
-        scale: { type: 'spring', visualDuration: 0.4, bounce: 0.5 },
-      }}
-      className="w-11/12 max-w-3xl text-center mx-auto h-screen 
-      flex flex-col items-center justify-center gap-4"
+    <motion.section
+      initial={false}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.55 }}
+      className="mx-auto flex min-h-screen w-11/12 max-w-4xl flex-col items-center justify-center gap-5 py-28 text-center"
+      aria-labelledby="hero-title"
     >
-      
-        <div>
-          <Image src={assets.profile_img} alt="" className="rounded-full w-32 max-w-full" />
-        </div>
-
-        <h3 className="flex items-end gap-2 text-xl md:text-2xl mb-3 font-Ovo">
-          Hi! I'm Rafif Adhirajasa{' '}
-          <Image src={assets.hand_icon} alt="" className="w-6" />
-        </h3>
-        <h1 className="text-3xl sm:text-6xl lg:text-[66px] font-Ovo">
-          Machine Learning developer & Data Scientist
-        </h1>
-        <p className="max-w-2xl mx-auto font-Ovo">
-          Hi, I’m Rafif — a Machine Learning Developer and Data Scientist based
-          in Indonesia. I love turning data into insights and building web apps
-          people enjoy using.
-        </p>
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
+      {profile.profileImageUrl ? (
+        <Image
+          src={profile.profileImageUrl}
+          alt="Portrait of the portfolio owner"
+          width={1024}
+          height={1024}
+          unoptimized
+          className="h-28 w-28 rounded-full object-cover sm:h-32 sm:w-32"
+          priority
+        />
+      ) : (
+        <div className="hero-avatar-placeholder" aria-hidden="true">ML</div>
+      )}
+      <p className="text-center text-xl font-Ovo md:text-2xl">
+        <span>{greeting}</span>{" "}
+        <Image src={assets.hand_icon} alt="" className="inline-block w-6 align-middle" />
+      </p>
+      <h1 id="hero-title" className="max-w-4xl text-4xl leading-tight font-Ovo sm:text-6xl lg:text-[66px]">
+        Machine learning, product thinking, and dependable software
+      </h1>
+      <p className="mx-auto max-w-2xl text-base leading-7 text-slate-700 font-Ovo sm:text-lg">
+        I turn uncertain problems into understandable systems—from mobile study
+        tools and image classifiers to privacy-conscious professional workflows.
+      </p>
+      <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row">
+        <a href="#works" className="flex items-center gap-2 rounded-full bg-black px-8 py-3 text-white">
+          Explore projects
+          <Image src={assets.right_arrow_white} alt="" className="w-4" />
+        </a>
+        {profile.resumeUrl ? (
           <a
-            href="#contact"
-            className="px-10 py-3 border border-white rounded-full bg-black text-white flex items-center gap-2"
+            href={profile.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 rounded-full border border-gray-500 px-8 py-3"
           >
-            Contact me{' '}
-            <Image
-              src={assets.right_arrow_white}
-              alt="right white arrow"
-              className="w-4"
-            />
+            View résumé
+            <Image src={assets.arrow_icon} alt="" className="w-3" />
           </a>
-          <a
-            href="/my-resume.pdf"
-            className="px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2"
-            download={"my-resume.pdf"}
-          >
-            My Resume{' '}
-            <Image
-              src={assets.arrow_icon}
-              alt="right blackarrow"
-              className="w-3"
-            />
-          </a>
-        </div>
-      
-    </motion.div>
+        ) : null}
+      </div>
+    </motion.section>
   );
-};
-
-export default Header;
+}

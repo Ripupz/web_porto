@@ -1,57 +1,48 @@
-import React from 'react'
-import Image from 'next/image'
-import { assets } from '@/assets/assets'
-import {motion} from 'framer-motion'
+"use client";
 
-const Contact = () => {
+import { motion } from "framer-motion";
+
+export default function Contact({ profile }) {
+  const links = [
+    profile.email ? { label: "Email", href: `mailto:${profile.email}` } : null,
+    profile.linkedinUrl ? { label: "LinkedIn", href: profile.linkedinUrl } : null,
+    profile.githubUrl ? { label: "GitHub", href: profile.githubUrl } : null,
+    profile.instagramUrl ? { label: "Instagram", href: profile.instagramUrl } : null,
+  ].filter(Boolean);
+
   return (
-    
-    <div id='contact' className='w-full px-[12%] py-10 scroll-mt-20 bg-[url("/footer-bg-color.png")] bg-no-repeat bg-center bg-[length:90%_auto]'>
+    <footer id="contact" className="scroll-mt-20 overflow-hidden bg-rose-50 px-5 py-20 sm:px-[8%]" aria-labelledby="contact-title">
+      <motion.div initial={false} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true, amount: 0.4 }} className="mx-auto max-w-4xl text-center">
+        <p className="mb-2 text-lg font-Ovo">Get in touch</p>
+        <h2 id="contact-title" className="text-4xl font-Ovo sm:text-5xl">
+          Let&apos;s talk about thoughtful technology
+        </h2>
+        <p className="mx-auto mt-5 max-w-2xl leading-7 text-slate-700 font-Ovo">
+          Contact details are supplied through private deployment variables and
+          are intentionally omitted when they have not been configured.
+        </p>
 
-      {/* Horizontal Line */}
-        <div className="border-t border-gray-300 my-8"></div>
-
-      <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{amount: 0.5 }}
-      >
-      
-        <h4 className='text-center mb-2 text-lg font-Ovo'>Get in Touch</h4>
-        <h2 className='text-center text-5xl font-Ovo'>Contact Me</h2>
-        <p className='mb-12 max-w-2xl font-Ovo text-center mx-auto mt-5'>I would love to hear from you! Whether you have a question or just want to say hi, feel free to reach out.</p>
-        
-        <div>
-            <ul className='items-center 
-      gap-6 lg:gap-8 rounded-full px-12 py-3 flex flex-col sm:flex-row justify-center'>
-                <li><a className="flex items-center gap-2" href="mailto:rafifadhirajasa88@example.com">Email Me <Image src={assets.arrow_icon} alt='right blackarrow' className='w-2' /></a></li>
-                <li><a className="flex items-center gap-2" href="https://www.linkedin.com/in/rafif-adhirajasa-063ba61b7" target="_blank">LinkedIn <Image src={assets.arrow_icon} alt='right blackarrow' className='w-2' /></a></li>
-                <li><a className="flex items-center gap-2" href="https://github.com/Ripupz" target="_blank">GitHub <Image src={assets.arrow_icon} alt='right blackarrow' className='w-2' /></a></li>
-                <li><a className="flex items-center gap-2" href="https://www.instagram.com/ripupz" target="_blank">My Instagram <Image src={assets.arrow_icon} alt='right blackarrow' className='w-2' /></a></li>
-            </ul>
-        </div>
+        {links.length ? (
+          <ul className="mt-8 flex flex-wrap justify-center gap-3">
+            {links.map((link) => (
+              <li key={link.label}>
+                <a href={link.href} target={link.href.startsWith("mailto:") ? undefined : "_blank"} rel={link.href.startsWith("mailto:") ? undefined : "noopener noreferrer"} className="inline-flex rounded-full border border-slate-400 bg-white px-5 py-2.5 font-semibold">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="mt-8 text-sm font-semibold text-slate-700">
+            Contact channels are not configured in the local environment yet.
+          </p>
+        )}
       </motion.div>
-        
-        {/* Horizontal Line */}
-        <div className="border-t border-gray-300 my-8"></div>
 
-       
-     {/* Footer Section */}
-    <motion.div className="flex justify-between items-center"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{amount: 0.5 }}
-    >
-        
-    </motion.div>
-    <div className="flex justify-between items-center">
-      <span className="text-lg font-Ovo">Rafif Adhirajasa©</span>
-        <span className="text-lg font-Ovo">Thank you :D</span>
-    </div>
-    </div>
-  )
+      <div className="mx-auto mt-16 flex max-w-7xl flex-col justify-between gap-3 border-t border-slate-300 pt-7 text-sm text-slate-600 sm:flex-row">
+        <span>{profile.fullName ? `${profile.fullName} ©` : "Portfolio"}</span>
+        <span>Built with care, evidence, and respect for confidentiality.</span>
+      </div>
+    </footer>
+  );
 }
-
-export default Contact

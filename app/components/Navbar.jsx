@@ -1,87 +1,127 @@
-import { assets } from '@assets/assets';
-import React, { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
-import { Ovo } from 'next/font/google';
+"use client";
 
-const ovo = Ovo({
-  subsets: ['latin'],
-  weight: ['400'],
-});
+import { assets } from "@/assets/assets";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
-const Navbar = () => {
+const navigation = [
+  ["Home", "#"],
+  ["About", "#about"],
+  ["Projects", "#works"],
+  ["Contact", "#contact"],
+];
 
-  const [isScroll, setIsScroll] = useState(false);
+export default function Navbar({ profile }) {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const sideMenuRef = useRef();
-    const openSideMenu = () => {
-        sideMenuRef.current.style.transform = 'translateX(-16rem)';
-    }
-    const closeSideMenu = () => {
-        sideMenuRef.current.style.transform = 'translateX(16rem)';
-    }
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-    useEffect(() => {
-        window.addEventListener('scroll',() => {
-          if(scrollY > 50) {
-            setIsScroll(true)
-          }else{
-            setIsScroll(false);
-          }
-        })
-    },[]);
+  useEffect(() => {
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   return (
-  <>
-
-    <div className='fixed top-0 right-0 w-11/12 -z-10 translate-y-[-80%]'> 
-        <Image src={assets.header_bg_color} alt='' className='w-full'/>
-    </div>
-    
-    <nav className={`w-full fixed px-5 lg:px-8 
-    xl:px-[8%] py-4 flex items-center justify-between z-50 ${isScroll ? "navbar-blur" : "navbar-no-blur"}`}>
-      <a href='#'>
-        <h1 className="w-28 cursor-pointer mr-14">Rafif Adhirajasa</h1>
-      </a>
-
-      <ul className={`hidden md:flex items-center 
-      gap-6 lg:gap-8 rounded-full px-12 py-3 ${isScroll ? '':'bg-white shadow-sm bg-opacity-50'}`}>
-        <li><a className="font-Ovo" href="#">Home</a></li>
-        <li><a className="font-Ovo" href="#about">About me</a></li>
-        <li><a className="font-Ovo" href="#works">My Works</a></li>
-        <li><a className="font-Ovo" href="#contact">Contact Me</a></li>
-      </ul>
-
-      <div className='flex items-center gap-4'>
-
-        {/* <button> 
-            <Image src={assets.moon_icon} alt='' className="w-6" />
-        </button> */}
-
-        <a href="https://www.linkedin.com/in/rafif-adhirajasa-063ba61b7" className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4">
-          Connect <Image src={assets.arrow_icon} alt="Arrow Icon" className="w-3" />
-        </a>
-
-        <button className='block md:hidden ml-3' onClick={openSideMenu}>
-            <Image src={assets.menu_black} alt='' className='w-6' />
-        </button>
+    <>
+      <div className="pointer-events-none fixed right-0 top-0 -z-10 w-11/12 -translate-y-[80%]">
+        <Image src={assets.header_bg_color} alt="" className="w-full" priority />
       </div>
 
-    {/* Mobile Menu */}
-    <ul ref={sideMenuRef} className='flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500'> 
-        
-        <div className='absolute right-6 top-6' onClick={closeSideMenu}>
-            <Image src={assets.close_black} alt='' className='w-5 cursor-pointer'/>
+      <nav
+        aria-label="Primary navigation"
+        className={`fixed inset-x-0 top-0 z-50 flex min-w-0 items-center justify-between px-5 py-4 transition lg:px-8 xl:px-[8%] ${
+          isScrolled ? "navbar-blur shadow-sm" : "navbar-no-blur"
+        }`}
+      >
+        <a href="#" className="min-w-0 rounded-sm font-semibold tracking-tight focus-visible:outline-2 focus-visible:outline-offset-4">
+          <span className="block max-w-44 truncate">
+            {profile.fullName || "Portfolio"}
+          </span>
+        </a>
+
+        <ul className="hidden items-center gap-6 rounded-full bg-white/80 px-10 py-3 shadow-sm md:flex lg:gap-8">
+          {navigation.map(([label, href]) => (
+            <li key={label}>
+              <a className="font-Ovo hover:text-emerald-700" href={href}>
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div className="flex shrink-0 items-center gap-3">
+          {profile.linkedinUrl ? (
+            <a
+              href={profile.linkedinUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden items-center gap-3 rounded-full border border-gray-500 px-6 py-2.5 lg:flex"
+            >
+              Connect
+              <Image src={assets.arrow_icon} alt="" className="w-3" />
+            </a>
+          ) : null}
+
+          <button
+            type="button"
+            className="rounded-md p-2 md:hidden"
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Open navigation menu"
+            aria-controls="mobile-menu"
+            aria-expanded={isMenuOpen}
+          >
+            <Image src={assets.menu_black} alt="" className="w-6" />
+          </button>
         </div>
+      </nav>
 
-        <li><a className="font-Ovo" onClick={closeSideMenu} href="#">Home</a></li>
-        <li><a className="font-Ovo" onClick={closeSideMenu} href="#about">About me</a></li>
-        <li><a className="font-Ovo" onClick={closeSideMenu} href="#works">My Works</a></li>
-        <li><a className="font-Ovo" onClick={closeSideMenu} href="#contact">Contact Me</a></li>
-    </ul>
-
-    </nav>
+      <div
+        className={`fixed inset-0 z-[60] bg-black/30 transition md:hidden ${
+          isMenuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        aria-hidden="true"
+        onClick={() => setIsMenuOpen(false)}
+      />
+      <aside
+        id="mobile-menu"
+        aria-label="Mobile navigation"
+        aria-hidden={!isMenuOpen}
+        className={`fixed inset-y-0 right-0 z-[70] w-[min(19rem,88vw)] origin-right transform bg-rose-50 px-8 py-20 shadow-2xl transition duration-300 md:hidden ${
+          isMenuOpen ? "visible scale-x-100 opacity-100" : "invisible scale-x-0 opacity-0"
+        }`}
+      >
+        <button
+          type="button"
+          onClick={() => setIsMenuOpen(false)}
+          aria-label="Close navigation menu"
+          className="absolute right-5 top-5 rounded-md p-2"
+        >
+          <Image src={assets.close_black} alt="" className="w-5" />
+        </button>
+        <ul className="flex flex-col gap-5">
+          {navigation.map(([label, href]) => (
+            <li key={label}>
+              <a
+                className="block rounded-md py-2 text-lg font-Ovo"
+                onClick={() => setIsMenuOpen(false)}
+                href={href}
+                tabIndex={isMenuOpen ? 0 : -1}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </aside>
     </>
   );
-};
-
-export default Navbar;
+}
