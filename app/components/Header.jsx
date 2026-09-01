@@ -35,11 +35,10 @@ export default function Header({ profile }) {
         <Image src={assets.hand_icon} alt="" className="inline-block w-6 align-middle" />
       </p>
       <h1 id="hero-title" className="max-w-4xl text-4xl leading-tight font-Ovo sm:text-6xl lg:text-[66px]">
-        Machine learning, product thinking, and dependable software
+        Building AI-driven products &amp; reliable software
       </h1>
       <p className="mx-auto max-w-2xl text-base leading-7 text-slate-700 font-Ovo sm:text-lg">
-        I turn uncertain problems into understandable systems—from mobile study
-        tools and image classifiers to privacy-conscious professional workflows.
+        I design and engineer intelligent systems—from computer vision and mobile tools to secure, privacy-first workflows.
       </p>
       <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row">
         <a href="#works" className="flex items-center gap-2 rounded-full bg-black px-8 py-3 text-white">

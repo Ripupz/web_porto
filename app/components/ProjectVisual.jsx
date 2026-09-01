@@ -52,7 +52,7 @@ function AuctionVisual({ compact }) {
         </div>
         <div className="document-findings auction-findings">
           <small>Workflow summary</small>
-          <strong className="document-findings__title">Independent lifecycle</strong>
+          <strong className="document-findings__title"> Independent lifecycle</strong>
           <div><span className="signal signal--green" />Per-item status & evidence</div>
           <div><span className="signal signal--amber" />Targeted recovery for failed items</div>
           <div><span className="signal signal--slate" />Partial success preserved</div>
@@ -81,7 +81,7 @@ function DocumentVisual({ compact }) {
         </div>
         <div className="document-findings">
           <small>Analysis summary</small>
-          <strong className="document-findings__title">Human review recommended</strong>
+          <strong className="document-findings__title"> Human review recommended</strong>
           <div><span className="signal signal--amber" />Inconsistent visual pattern</div>
           <div><span className="signal signal--violet" />Metadata needs context</div>
           <div><span className="signal signal--green" />File checks completed</div>
@@ -127,7 +127,7 @@ function LegalVisual({ compact }) {
         </div>
         <div className="document-findings legal-findings">
           <small>Verification summary</small>
-          <strong className="document-findings__title">Human review required</strong>
+          <strong className="document-findings__title"> Human review required</strong>
           <div><span className="signal signal--amber" />Conservative identity confidence</div>
           <div><span className="signal signal--blue" />Multi-source provenance retained</div>
           <div><span className="signal signal--green" />Independent provider checks</div>
