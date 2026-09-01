@@ -13,34 +13,34 @@ This is a portfolio-safe compilation of the applicant's RIS work, prioritizing t
 ### 1. Digital auction workflow
 
 - Mapped request submission through status and result retrieval
-- Helped represent multiple records as independently tracked work
-- Separated processing failure from a valid no-result outcome
-- Designed targeted retry and partial-progress behavior
-- Investigated misleading reachable pages and layered conservative validation
+- Built independently tracked multi-certificate submission behavior
+- Separated technical failure from a valid no-result outcome
+- Designed targeted retry and partial-progress behavior so completed work is preserved
+- Investigated misleading reachable pages and layered source, content, and context validation
 - Documented implementation and recovery behavior for maintainers
 
 Portfolio angle: dependable workflow design, fault isolation, traceable state, and honest result semantics.
 
 ### 2. Document authenticity workflow
 
-- Defined a private document-scan purpose that assists rather than replaces a reviewer
-- Contributed the intake, status, result, preview, and failure contract
-- Added strict file checks, private processing, temporary-artifact cleanup, and repeat-safe result behavior
-- Integrated vision-assisted observations into a validated structured result
-- Added automated application-level verification and documented remaining validation limits
+- Defined an AI-assisted document integrity workflow that supports rather than replaces a reviewer
+- Contributed the authenticated upload, status, result, preview, and failure contract
+- Added strict PDF/image validation, private processing, temporary-artifact cleanup, and repeat-safe result behavior
+- Integrated multimodal AI observations into validated structured findings
+- Added deterministic backend scoring, escalation rules, bounded model-output repair, and automated application-level verification
 
-Portfolio angle: responsible AI, privacy-conscious file handling, structured API design, uncertainty communication, and testing.
+Portfolio angle: responsible AI, multimodal document analysis, privacy-conscious file handling, structured API design, deterministic validation, uncertainty communication, and testing.
 
 ### 3. Legal record verification workflow
 
-- Coordinated several independent public-information checks through a shared lifecycle
+- Coordinated SIPP, Hukum Online, and Putusan MA checks through a shared parent/child lifecycle
 - Normalized source status and evidence while retaining provenance
-- Improved recovery from dynamic-page, access, and document-retrieval failures
-- Added conservative identity-confidence behavior and exact-match safeguards
+- Improved recovery from dynamic-page, access, authenticated-session, OTP, and document-retrieval failures
+- Added LLM-first identity matching, redacted-party handling, conservative fallback metadata, and exact-match safeguards
 - Handled partial results without implying that unavailable data proves absence
 - Created repeatable operational and debugging notes for ongoing maintenance
 
-Portfolio angle: robust orchestration, false-positive risk reduction, graceful degradation, provenance, and privacy-aware handling of public personal data.
+Portfolio angle: AI-assisted reviewer triage, robust orchestration, false-positive risk reduction, graceful degradation, provenance, and privacy-aware handling of public personal data.
 
 ### 4. Cross-cutting engineering work
 

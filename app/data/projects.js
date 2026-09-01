@@ -23,16 +23,16 @@ const projectDefinitions = [
       "Python",
       "REST APIs",
       "Asynchronous processing",
-      "Automated validation",
+      "Evidence validation",
     ],
     summary:
-      "A multi-record review workflow that helps reviewers follow each auction-related request independently and preserve completed results when another request fails.",
+      "A fault-tolerant auction review workflow that lets reviewers submit multiple certificate checks, track each result independently, and retry only the records that fail.",
     process:
-      "Mapped the submission-to-result lifecycle, separated processing state from result meaning, and designed independent task handling with targeted retries.",
+      "Mapped the submission-to-result lifecycle, separated execution status from evidence meaning, and designed per-record task handling with targeted retries.",
     outcome:
-      "Produced a more traceable, fault-isolated flow with clearer failure and no-result behavior.",
+      "Produced a clearer operational flow where valid results are preserved, failed checks are recoverable, and no-result outcomes are not mistaken for system errors.",
     learning:
-      "Reliability improves when each request has explicit state, evidence, and recovery behavior instead of being hidden inside one all-or-nothing batch.",
+      "Reliable reviewer tools need explicit state, evidence, and recovery behavior for every record instead of hiding work inside one all-or-nothing batch.",
     story: {
       problem:
         "I worked on a multi-record review flow where every check could finish differently: completed with evidence, completed without a matching result, or interrupted by an error. The challenge was to preserve successful work and make each outcome understandable without forcing reviewers to restart the entire submission.",
@@ -42,22 +42,22 @@ const projectDefinitions = [
         "When one unclear or failed item hides successful results, reviewers repeat work and lose trust in the workflow. Clear state and targeted recovery keep progress visible without implying that missing evidence is a negative result.",
       responsibilities: [
         "Mapped and documented the master-log and result lifecycle.",
-        "Contributed independent multi-item submission and progress behavior.",
-        "Separated processing failures from valid no-result outcomes.",
-        "Added defensive validation for unreadable or misleading source pages.",
-        "Defined targeted retry and recovery behavior.",
+        "Built independent submission and progress behavior for multiple certificate checks.",
+        "Separated technical failures from valid no-result outcomes.",
+        "Added layered validation for reachable but unreadable or misleading source pages.",
+        "Defined targeted retry behavior so reviewers could recover failed rows without resubmitting completed work.",
       ],
       contributions: [
         "Per-item status and result tracking",
         "Fault-isolated multi-item submission",
-        "Duplicate-prevention and targeted retry considerations",
-        "Layered source and context validation",
+        "Duplicate-prevention and targeted retry design",
+        "Layered source, content, and context validation",
         "Operational workflow documentation",
       ],
       research:
         "I traced the complete request, status, and result path; reviewed how partial failures reached the interface; and investigated cases where a technically reachable page did not contain a valid listing.",
       approach:
-        "Each submitted item becomes an independently tracked unit. The workflow records progress separately from the meaning of the returned result, validates the source at several layers, and exposes enough state for the interface to retry only what needs recovery.",
+        "Each submitted certificate becomes its own asynchronous job. The workflow records processing state separately from result meaning, validates source evidence at several layers, and exposes enough state for the interface to retry only what needs recovery.",
       decisions:
         "The design favors fault isolation over all-or-nothing batching. That preserves successful work but requires deliberate duplicate prevention, progress aggregation, and clear retry rules in the interface.",
       challenge:
@@ -81,48 +81,50 @@ const projectDefinitions = [
     technologies: [
       "Python",
       "Secure file processing",
-      "Vision-assisted analysis",
+      "Multimodal AI analysis",
+      "Structured validation",
       "Automated tests",
     ],
     summary:
-      "A document-review system that surfaces indications of digital manipulation or AI generation while keeping the final judgment with a human reviewer.",
+      "An AI-assisted document integrity system that analyzes uploaded files for signs of digital manipulation, content inconsistencies, or AI-generated artifacts while keeping final judgment with a reviewer.",
     process:
-      "Designed the intake and status contract, strict file checks, secure processing lifecycle, structured findings, cleanup behavior, and reviewer-safe wording.",
+      "Designed the upload, status, and result contract; enforced strict file validation; routed pages through multimodal AI analysis; and converted model output into structured, reviewer-safe findings.",
     outcome:
-      "Established and test-validated the core backend workflow. End-to-end staging calibration and user validation were still pending in the reviewed notes.",
+      "Established a test-validated backend workflow with deterministic scoring, private artifact handling, bounded model-repair behavior, and clear escalation states.",
     learning:
-      "For uncertain AI signals, product language, traceable evidence, privacy controls, and failure handling matter as much as the model response.",
+      "Responsible AI features depend on model design, evidence grounding, deterministic validation, privacy controls, and careful product language together.",
     story: {
       problem:
-        "Reviewers need help spotting potential manipulation in uploaded documents, but a model output cannot prove that a document is genuine or fake.",
+        "Reviewers need help spotting suspicious patterns in uploaded documents, but AI output cannot prove that a document is genuine or fake.",
       users:
         "Document reviewers assessing uploaded files for possible manipulation indicators.",
       why:
         "False certainty can harm people and decisions. The system therefore needed to surface useful signals without presenting an automated verdict as fact.",
       responsibilities: [
-        "Designed an incremental API and processing workflow for document analysis.",
-        "Implemented strict file intake and structured status/result behavior.",
-        "Contributed temporary-file handling, cleanup, and preview access controls.",
-        "Integrated vision-assisted analysis behind a validated output contract.",
-        "Added automated verification for success, failure, and repeat-delivery paths.",
+        "Designed the authenticated multipart API, scan lifecycle, and reviewer-facing result contract.",
+        "Implemented strict file validation for PDFs and common image formats using extension, MIME, and magic-byte checks.",
+        "Integrated multimodal AI analysis for rendered document pages and bounded supplemental PDF text.",
+        "Converted AI candidates into validated structured findings with deterministic backend scoring and escalation rules.",
+        "Contributed private storage handling, temporary-file cleanup, preview access controls, and repeat-safe result delivery.",
       ],
       contributions: [
         "Single-document intake and validation",
         "Asynchronous scan lifecycle",
-        "Reviewer-oriented findings and explanations",
-        "Preview access and cleanup safeguards",
-        "Structured outputs and resilient error states",
+        "Multimodal AI document analysis",
+        "Deterministic risk scoring and escalation",
+        "Private storage, preview, and cleanup safeguards",
+        "Structured outputs and bounded model-failure handling",
       ],
       research:
         "I investigated manipulation indicators, model-output failure modes, file-format ambiguity, reviewer needs, and the privacy consequences of retaining original documents and generated previews.",
       approach:
-        "The system validates the file, processes it through a controlled workflow, converts model observations into a strict structured result, and presents indications and evidence for human review rather than a binary truth claim.",
+        "The system validates one uploaded file, stores it privately, renders analyzable pages, sends page evidence to a multimodal model, validates the AI response against a strict schema, then derives risk scores and reviewer actions in backend code before persisting the result.",
       decisions:
-        "The central trade-off was usefulness versus certainty. Conservative language and structured evidence reduce overclaiming, while strict contracts and cleanup add engineering work but make failures safer and more diagnosable.",
+        "The central trade-off was usefulness versus certainty. AI is the core analysis engine, but backend validation, deterministic scoring, and conservative language prevent the model from becoming an unchecked binary judge.",
       challenge:
-        "Document formats and model responses can be inconsistent. The workflow added bounded input handling, validated output structure, repeat-safe result delivery, and cleanup on both success and failure.",
+        "Document formats and model responses can be inconsistent. The workflow added bounded input handling, page coverage checks, schema validation, a limited repair pass for invalid model output, repeat-safe result delivery, and cleanup on both success and failure.",
       testing:
-        "The reviewed notes record automated workflow verification. A production-quality accuracy claim is not made because labeled-data calibration and end-to-end staging validation were not evidenced as complete.",
+        "Regression coverage exists for scoring, schema validation, model-adapter behavior, processor completion, database projection, and failure handling. The case study does not claim production accuracy because labeled-data calibration and full staging validation were still pending.",
       outcome:
         "The core scan workflow and reviewer-oriented result contract were implemented and verified at the application level.",
       privacy:
@@ -141,16 +143,17 @@ const projectDefinitions = [
       "Python",
       "REST APIs",
       "Asynchronous orchestration",
-      "Confidence-based matching",
+      "LLM identity matching",
+      "Browser automation",
     ],
     summary:
-      "A workflow that coordinates checks across multiple public legal-information sources, normalizes inconsistent responses, and helps reviewers distinguish stronger identity matches from ambiguous ones.",
+      "An AI-assisted legal record verification workflow that orchestrates checks across several public information sources, normalizes inconsistent evidence, and helps reviewers distinguish strong identity matches from ambiguous ones.",
     process:
-      "Investigated source behavior, built provider orchestration and status aggregation, improved recovery from dynamic-page failures, and added conservative identity-matching safeguards.",
+      "Built provider orchestration and status aggregation, improved browser-based recovery for dynamic sources, and added LLM-first identity matching with conservative fallback safeguards.",
     outcome:
-      "Created a documented, resilient verification flow with clearer provenance and failure behavior.",
+      "Created a documented verification flow with clearer provenance, safer identity confidence, graceful partial results, and more diagnosable source failures.",
     learning:
-      "Publicly available data is still sensitive; reliable verification requires provenance, conservative matching, and a visible path for human review.",
+      "AI can improve reviewer triage, but public-record workflows still need provenance, conservative confidence labels, and visible human-review paths.",
     story: {
       problem:
         "Relevant public legal records are spread across sources with different formats, availability, and search behavior. Matching by name alone can also produce harmful false positives.",
@@ -159,27 +162,28 @@ const projectDefinitions = [
       why:
         "Reviewers need consistent evidence and clear uncertainty. Silent source failures or weak identity matches can make an incomplete result look more conclusive than it is.",
       responsibilities: [
-        "Contributed orchestration across multiple independent information sources.",
-        "Implemented and documented job lifecycle, status aggregation, and failure recovery.",
-        "Improved robustness for dynamic pages, access challenges, and document retrieval.",
-        "Added confidence-aware identity matching and exact-match safeguards.",
+        "Contributed orchestration across SIPP, Hukum Online, and Putusan MA child-provider checks.",
+        "Implemented and documented parent/child job lifecycle, status aggregation, and partial-failure recovery.",
+        "Improved robustness for dynamic pages, access challenges, authenticated sessions, OTP handling, and document retrieval.",
+        "Added LLM-first identity matching, redacted-party handling, fuzzy fallback metadata, and exact-match safeguards.",
         "Normalized result presentation while keeping source provenance visible.",
       ],
       contributions: [
         "Independent source checks and parent aggregation",
-        "Conservative identity-confidence metadata",
-        "Dynamic-page and document-retrieval resilience",
+        "LLM identity scoring with conservative fallback",
+        "Dynamic-page, session, and document-retrieval resilience",
+        "Case-number follow-up routing across sources",
         "Clear terminal status and partial-failure behavior",
         "Operational notes and repeatable debugging guidance",
       ],
       research:
-        "I studied how several public sources structure searches, case references, result pages, access challenges, and downloadable evidence. I also examined ambiguous-name and redacted-party scenarios before defining confidence behavior.",
+        "I studied how several public sources structure searches, case numbers, result pages, access challenges, authenticated downloads, and evidence files. I also examined ambiguous-name and redacted-party scenarios before defining confidence behavior.",
       approach:
-        "Independent source checks run through a shared lifecycle, normalize their status and evidence, attach conservative identity confidence, and aggregate into a reviewer-facing view without treating missing data as proof of absence.",
+        "A legal_check request creates a parent job and independent child jobs for selected sources. Each child normalizes status and evidence, AI-assisted identity scoring adds confidence metadata where appropriate, and the parent aggregates results without treating missing data as proof of absence.",
       decisions:
-        "The workflow keeps source-specific failures visible and uses conservative fallback matching. This can leave more items for human review, but it reduces the risk of presenting a weak identity match as certain.",
+        "The workflow keeps source-specific failures visible and uses conservative AI/fallback matching. This can leave more items for human review, but it reduces the risk of presenting a weak identity match as certain.",
       challenge:
-        "Dynamic pages, access gates, inconsistent formats, and same-name records created reliability and false-match risks. The solution combined resilient navigation, exact-match checks, confidence metadata, and graceful partial results.",
+        "Dynamic pages, access gates, expired sessions, inconsistent formats, and same-name records created reliability and false-match risks. The solution combined resilient navigation, session recovery, LLM confidence scoring, exact-match checks, and graceful partial results.",
       testing:
         "Validation included targeted smoke checks, failure paths, and repeated investigation of source-specific edge cases.",
       outcome:

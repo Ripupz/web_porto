@@ -7,7 +7,7 @@ This review defines the publication boundary for the Apple Developer Academy por
 - Generic project purpose and intended workflow
 - The applicant's high-level responsibilities
 - Problem-solving approach, trade-offs, testing categories, and lessons
-- Broad technology categories such as Python, REST APIs, asynchronous processing, vision-assisted analysis, and automated tests
+- Broad technology categories such as Python, REST APIs, asynchronous processing, multimodal AI analysis, browser automation, and automated tests
 - Illustrative workflow diagrams using example data
 - Honest project status without production, revenue, accuracy, or scale claims
 - The Moladin internship attribution, Veriflo project name, and `https://veriflo.co.id/` landing page, explicitly approved by the portfolio owner on 2026-08-31

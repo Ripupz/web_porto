@@ -9,7 +9,7 @@
 
 ## Problem and intended users
 
-I worked on a multi-record review flow where every check could finish differently: completed with evidence, completed without a matching result, or interrupted by an error. The intended users are operational reviewers handling several auction-related checks in one submission and needing clear per-item status, evidence, and recovery options.
+I worked on a multi-record auction review flow where every certificate check could finish differently: completed with evidence, completed without a matching result, or interrupted by an error. The intended users are operational reviewers handling several auction-related checks in one submission and needing clear per-item status, evidence, and recovery options.
 
 ## Why the problem mattered
 
@@ -18,11 +18,11 @@ When one unclear or failed item hides successful results, reviewers repeat work 
 ## Responsibilities and contributed components
 
 - Mapped and documented the request, master-log, and result lifecycle
-- Contributed independently tracked multi-item submission behavior
-- Separated processing status from result meaning
-- Added conservative validation for misleading or unreadable source states
-- Defined duplicate-prevention and targeted-retry considerations
-- Documented targeted retry and recovery behavior
+- Built independently tracked multi-certificate submission behavior
+- Separated technical failures from valid no-result outcomes
+- Added layered validation for reachable but misleading or unreadable source states
+- Defined duplicate-prevention and targeted-retry behavior
+- Documented recovery behavior for maintainers and reviewers
 
 ## Research and investigation
 
@@ -30,11 +30,11 @@ Traced the full submission-to-result path, reviewed how partial failures reached
 
 ## High-level technical approach
 
-Each item is tracked independently through an asynchronous lifecycle. Progress and result meaning remain separate, source evidence is checked conservatively, and the interface can recover only the items that need another attempt.
+Each certificate is tracked as its own asynchronous job. Progress and result meaning remain separate, source evidence is checked conservatively, and the interface can recover only the items that need another attempt.
 
 ## Technologies
 
-Python, REST APIs, asynchronous processing, and automated validation.
+Python, REST APIs, asynchronous processing, source/evidence validation, and operational workflow documentation.
 
 ## Decisions and trade-offs
 
@@ -46,7 +46,7 @@ Some external pages can be reachable while empty or misleading. Layered reachabi
 
 ## Testing and outcome
 
-Work covered lifecycle, failure, and representative source states. The implemented flow became easier to trace and recover.
+Work covered lifecycle, failure, and representative source states. The implemented flow preserved completed results, made failed rows recoverable, and made no-result outcomes easier to distinguish from system errors.
 
 ## Privacy, security, and ethics
 

@@ -69,7 +69,7 @@ function DocumentVisual({ compact }) {
     <VisualFrame
       compact={compact}
       tone="violet"
-      label="Document review workflow with example findings and a human review reminder"
+      label="AI-assisted document integrity workflow with example findings and a human review reminder"
     >
       <div className="document-demo">
         <div className="document-sheet">
@@ -81,14 +81,14 @@ function DocumentVisual({ compact }) {
           <div className="document-sheet__mark">?</div>
         </div>
         <div className="document-findings auction-findings">
-        <small>Workflow summary</small>
-        <br />
-        <strong className="document-findings__title">AI-assisted auction finding</strong>
-        <div><span className="signal signal--green" />Explicit per-item match evidence</div>
-        <div><span className="signal signal--amber" />Targeted recovery for failed requests</div>
-        <div><span className="signal signal--slate" />Fault-isolated batch execution</div>
-        <p>Assists reviewers with AI-driven auction record matching, using independent lifecycles so a single failure never erases completed findings.</p>
-      </div>
+          <small>Workflow summary</small>
+          <br />
+          <strong className="document-findings__title">AI document integrity review</strong>
+          <div><span className="signal signal--green" />Structured findings from page evidence</div>
+          <div><span className="signal signal--amber" />Deterministic scoring and escalation</div>
+          <div><span className="signal signal--slate" />Private storage and cleanup controls</div>
+          <p>Uses multimodal AI to surface manipulation indicators, then validates and scores the findings before human review.</p>
+        </div>
       </div>
     </VisualFrame>
   );
@@ -130,11 +130,11 @@ function LegalVisual({ compact }) {
         <div className="document-findings legal-findings">
           <small>Verification summary</small>
           <br />
-          <strong className="document-findings__title">Escalated for expert review</strong>
+          <strong className="document-findings__title">AI-assisted legal verification</strong>
           <div><span className="signal signal--amber" />AI identity matching</div>
           <div><span className="signal signal--blue" />Resilient provider orchestration</div>
           <div><span className="signal signal--green" />Independent provider checks</div>
-          <p>Normalizes inconsistent public data to help human reviewers safely distinguish ambiguous identity matches.</p>
+          <p>Combines multi-source evidence with confidence metadata so reviewers can safely assess ambiguous identity matches.</p>
         </div>
       </div>
     </VisualFrame>
