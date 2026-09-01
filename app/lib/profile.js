@@ -22,6 +22,7 @@ export function getProfile() {
     internshipYear: clean(process.env.INTERNSHIP_YEAR),
     // Intentionally not rendered. A company name requires separate publication approval.
     internshipCompany: clean(process.env.INTERNSHIP_COMPANY),
+    location: clean(process.env.PORTFOLIO_LOCATION) || "JAKARTA, ID",
   };
 }
 

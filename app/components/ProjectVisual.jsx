@@ -17,62 +17,48 @@ function AuctionVisual({ compact }) {
     <VisualFrame
       compact={compact}
       tone="amber"
-      label="Infographic showing three auction-review requests tracked independently through mixed outcomes"
+      label="Auction record review workflow with independent status and recovery"
     >
-      <div className={`auction-infographic ${compact ? "auction-infographic--compact" : ""}`}>
-        <div className="auction-infographic__header">
-          <div>
-            <small>Veriflo · multi-record review</small>
-            <strong>Independent request lifecycle</strong>
-          </div>
-          <span>3 example records</span>
-        </div>
-
-        <div className="auction-infographic__flow" aria-hidden="true">
-          <div><span>01</span><small>Submit batch</small><strong>3 records</strong></div>
-          <i>→</i>
-          <div><span>02</span><small>Track separately</small><strong>3 states</strong></div>
-          <i>→</i>
-          <div><span>03</span><small>Recover precisely</small><strong>1 retry</strong></div>
-        </div>
-
-        <div className="auction-infographic__body">
-          <div className="auction-records">
-            <div className="auction-record auction-record--success">
-              <span>A</span>
-              <div><small>Example record</small><strong>Evidence ready</strong></div>
-              <em>Completed</em>
+      <div className="document-demo">
+        <div className="document-sheet auction-sheet">
+          <span className="document-sheet__stamp auction-stamp">BATCH</span>
+          <div className="auction-mini-list">
+            <div className="auction-mini-item">
+              <span className="signal signal--green" />
+              <div>
+                <strong>Lot #482</strong>
+                <small>Evidence ready</small>
+              </div>
+              <span className="auction-badge auction-badge--success">Ready</span>
             </div>
-            <div className="auction-record auction-record--neutral">
-              <span>B</span>
-              <div><small>Example record</small><strong>No matching result</strong></div>
-              <em>Reviewed</em>
+            <div className="auction-mini-item">
+              <span className="signal signal--slate" />
+              <div>
+                <strong>Lot #483</strong>
+                <small>No listing match</small>
+              </div>
+              <span className="auction-badge auction-badge--neutral">Preserved</span>
             </div>
-            <div className="auction-record auction-record--warning">
-              <span>C</span>
-              <div><small>Example record</small><strong>Retry required</strong></div>
-              <em>Recoverable</em>
+            <div className="auction-mini-item">
+              <span className="signal signal--amber" />
+              <div>
+                <strong>Lot #484</strong>
+                <small>Retry required</small>
+              </div>
+              <span className="auction-badge auction-badge--warning">Retry</span>
             </div>
           </div>
-
-          <div className="auction-outcome">
-            <small>Design principle</small>
-            <strong>One issue does not erase other results</strong>
-            <ul>
-              <li>Per-item status</li>
-              <li>Partial success preserved</li>
-              <li>Targeted recovery</li>
-            </ul>
-          </div>
+          <div className="document-sheet__mark auction-mark">✓</div>
         </div>
-
-        <div className="auction-infographic__footer">
-          <span>Explicit states</span>
-          <span>No-result ≠ failure</span>
-          <span>Retry only what failed</span>
+        <div className="document-findings auction-findings">
+          <small>Workflow summary</small>
+          <strong className="document-findings__title">Independent lifecycle</strong>
+          <div><span className="signal signal--green" />Per-item status & evidence</div>
+          <div><span className="signal signal--amber" />Targeted recovery for failed items</div>
+          <div><span className="signal signal--slate" />Partial success preserved</div>
+          <p>One issue does not erase other results.</p>
         </div>
       </div>
-      <p className="visual-caption">Submit → track independently → preserve results → recover precisely</p>
     </VisualFrame>
   );
 }
@@ -111,58 +97,43 @@ function LegalVisual({ compact }) {
     <VisualFrame
       compact={compact}
       tone="blue"
-      label="Infographic showing an example identity reviewed across three public-information sources with conservative matching"
+      label="Legal record verification map with multi-source checks and confidence signals"
     >
-      <div className={`legal-infographic ${compact ? "legal-infographic--compact" : ""}`}>
-        <div className="legal-infographic__header">
-          <div className="legal-infographic__mark">◇</div>
-          <div>
-            <small>Veriflo · identity evidence review</small>
-            <strong>Multi-source verification map</strong>
-          </div>
-          <span>Example profile</span>
-        </div>
-
-        <div className="legal-infographic__body">
-          <div className="legal-evidence-column">
-            <div className="legal-subject-card">
-              <span className="legal-avatar">SP</span>
-              <div><small>Example subject</small><strong>Sample Person</strong><em>Identity requires review</em></div>
-              <b>3 sources</b>
-            </div>
-
-            <div className="legal-source-grid">
-              <div className="legal-source-card legal-source-card--match">
-                <span>A</span><div><small>Public source</small><strong>Possible record</strong></div><em>Review</em>
-              </div>
-              <div className="legal-source-card legal-source-card--clear">
-                <span>B</span><div><small>Public source</small><strong>No confident match</strong></div><em>Checked</em>
-              </div>
-              <div className="legal-source-card legal-source-card--missing">
-                <span>C</span><div><small>Public source</small><strong>Evidence unavailable</strong></div><em>Partial</em>
-              </div>
+      <div className="document-demo">
+        <div className="document-sheet legal-sheet">
+          <span className="document-sheet__stamp legal-stamp">VERIFY</span>
+          <div className="legal-mini-profile">
+            <div className="legal-mini-avatar">SP</div>
+            <div>
+              <strong>Sample Person</strong>
+              <small>3 source checks</small>
             </div>
           </div>
-
-          <div className="legal-review-panel">
-            <small>Reviewer summary</small>
-            <strong>Human verification required</strong>
-            <p>One possible record needs identity review before it can inform a decision.</p>
-            <ul>
-              <li>Provenance retained</li>
-              <li>Ambiguity stays visible</li>
-              <li>Missing data is not absence</li>
-            </ul>
+          <div className="legal-mini-list">
+            <div className="legal-mini-item">
+              <span className="signal signal--amber" />
+              <span>Public source match</span>
+            </div>
+            <div className="legal-mini-item">
+              <span className="signal signal--green" />
+              <span>No adverse finding</span>
+            </div>
+            <div className="legal-mini-item">
+              <span className="signal signal--slate" />
+              <span>Source unavailable</span>
+            </div>
           </div>
+          <div className="document-sheet__mark legal-mark">◇</div>
         </div>
-
-        <div className="legal-infographic__footer">
-          <span>Independent checks</span>
-          <span>Conservative matching</span>
-          <span>Graceful partial results</span>
+        <div className="document-findings legal-findings">
+          <small>Verification summary</small>
+          <strong className="document-findings__title">Human review required</strong>
+          <div><span className="signal signal--amber" />Conservative identity confidence</div>
+          <div><span className="signal signal--blue" />Multi-source provenance retained</div>
+          <div><span className="signal signal--green" />Independent provider checks</div>
+          <p>Assistive evidence map—not automated legal judgment.</p>
         </div>
       </div>
-      <p className="visual-caption">Collect evidence → preserve provenance → surface uncertainty → support human review</p>
     </VisualFrame>
   );
 }
