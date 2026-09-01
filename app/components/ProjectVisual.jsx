@@ -52,11 +52,12 @@ function AuctionVisual({ compact }) {
         </div>
         <div className="document-findings auction-findings">
           <small>Workflow summary</small>
-          <strong className="document-findings__title"> Independent lifecycle</strong>
-          <div><span className="signal signal--green" />Per-item status & evidence</div>
-          <div><span className="signal signal--amber" />Targeted recovery for failed items</div>
-          <div><span className="signal signal--slate" />Partial success preserved</div>
-          <p>One issue does not erase other results.</p>
+          <br />
+          <strong className="document-findings__title">Resilient batch processing</strong>
+          <div><span className="signal signal--green" />Explicit state & evidence per item</div>
+          <div><span className="signal signal--amber" />Targeted retries for failed requests</div>
+          <div><span className="signal signal--slate" />Fault-isolated batch execution</div>
+          <p>Replaces all-or-nothing batches with independent lifecycles, ensuring a single failure never erases completed results.</p>
         </div>
       </div>
     </VisualFrame>
@@ -79,14 +80,15 @@ function DocumentVisual({ compact }) {
           <div className="document-sheet__line short" />
           <div className="document-sheet__mark">?</div>
         </div>
-        <div className="document-findings">
-          <small>Analysis summary</small>
-          <strong className="document-findings__title"> Human review recommended</strong>
-          <div><span className="signal signal--amber" />Inconsistent visual pattern</div>
-          <div><span className="signal signal--violet" />Metadata needs context</div>
-          <div><span className="signal signal--green" />File checks completed</div>
-          <p>Assistive signals—not a genuine/fake verdict.</p>
-        </div>
+        <div className="document-findings auction-findings">
+        <small>Workflow summary</small>
+        <br />
+        <strong className="document-findings__title">AI-assisted auction finding</strong>
+        <div><span className="signal signal--green" />Explicit per-item match evidence</div>
+        <div><span className="signal signal--amber" />Targeted recovery for failed requests</div>
+        <div><span className="signal signal--slate" />Fault-isolated batch execution</div>
+        <p>Assists reviewers with AI-driven auction record matching, using independent lifecycles so a single failure never erases completed findings.</p>
+      </div>
       </div>
     </VisualFrame>
   );
@@ -127,11 +129,12 @@ function LegalVisual({ compact }) {
         </div>
         <div className="document-findings legal-findings">
           <small>Verification summary</small>
-          <strong className="document-findings__title"> Human review required</strong>
-          <div><span className="signal signal--amber" />Conservative identity confidence</div>
-          <div><span className="signal signal--blue" />Multi-source provenance retained</div>
+          <br />
+          <strong className="document-findings__title">Escalated for expert review</strong>
+          <div><span className="signal signal--amber" />AI identity matching</div>
+          <div><span className="signal signal--blue" />Resilient provider orchestration</div>
           <div><span className="signal signal--green" />Independent provider checks</div>
-          <p>Assistive evidence map—not automated legal judgment.</p>
+          <p>Normalizes inconsistent public data to help human reviewers safely distinguish ambiguous identity matches.</p>
         </div>
       </div>
     </VisualFrame>
