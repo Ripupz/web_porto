@@ -52,3 +52,5 @@ Thumbs.db
 # Generated Academy deliverables may contain personal information
 /deliverables/*.pdf
 /deliverables/rendered/
+
+scratch/
