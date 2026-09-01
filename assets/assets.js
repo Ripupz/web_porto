@@ -1,4 +1,3 @@
-import user_image from './user-image.png';
 import code_icon from './code-icon.png';
 import code_icon_dark from './code-icon-dark.png';
 import edu_icon from './edu-icon.png';
@@ -15,7 +14,6 @@ import logo from './logo.png';
 import logo_dark from './logo_dark.png';
 import mail_icon from './mail_icon.png';
 import mail_icon_dark from './mail_icon_dark.png';
-import profile_img from './profile-img.png';
 import download_icon from './download-icon.png';
 import hand_icon from './hand-icon.png';
 import header_bg_color from './header-bg-color.png';
@@ -40,7 +38,6 @@ import python_logo from './python-logo-only.png';
 import pytorch_logo from './Pytorch_logo.png';
 
 export const assets = {
-    user_image,
     code_icon,
     code_icon_dark,
     edu_icon,
@@ -57,7 +54,6 @@ export const assets = {
     logo_dark,
     mail_icon,
     mail_icon_dark,
-    profile_img,
     download_icon,
     hand_icon,
     header_bg_color,
@@ -82,46 +78,11 @@ export const assets = {
     pytorch_logo
 };
 
-export const workData = [
-     {
-        title: 'CateringZ',
-        description: 'Frontend Development Web based restaurant menu ',
-        bgImage: '/CateringZ.png',
-        github:"https://github.com/Ripupz/CateringZ",
-    },
-    {
-        title: 'Stuggy - Your Study Buddy',
-        description: 'Mobile App Development for a study planner app',
-        bgImage: '/stuggy.png',
-        github:"https://github.com/Ripupz/stuggy_app",
-    },
-    {
-        title: 'CarsIdentifier - Vehicle Recognition System',
-        description: 'Building a vehicle recognition system using deep learning',
-        bgImage: '/vehicle.png',
-        github:"https://github.com/Ripupz/vehicle-recognition",
-    },
-    {
-        title: 'CalCountAI - AI-Powered Calorie Counter',
-        description: 'an AI-powered calorie counter that uses image recognition to estimate calorie content from food images.',
-        bgImage: '/CalCountAI.png',
-        github:"https://github.com/Ripupz/CalCountAI",
-    },
-]
-
-export const serviceData = [
-    { icon: assets.web_icon, title: 'Web design', description: 'Web development is the process of building, programming...', link: '' },
-    { icon: assets.mobile_icon, title: 'Mobile app', description: 'Mobile app development involves creating software for mobile devices...', link: '' },
-    { icon: assets.ui_icon, title: 'UI/UX design', description: 'UI/UX design focuses on creating a seamless user experience...', link: '' },
-    { icon: assets.graphics_icon, title: 'Graphics design', description: 'Creative design solutions to enhance visual communication...', link: '' },
-]
-
-export const infoList = [
-    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'Python, Next JS, C++, Tailwind CSS, JavaScript' },
-    { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'Bachelor of Computer Science at Binus University' },
-    { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects (Web Apps & non Web Apps)' }
-];
-
 export const toolsData = [
-    assets.vscode, assets.python_logo, assets.supabase_logo, assets.figma, assets.git, assets.pytorch_logo
+    { image: assets.vscode, label: 'Visual Studio Code' },
+    { image: assets.python_logo, label: 'Python' },
+    { image: assets.supabase_logo, label: 'Supabase' },
+    { image: assets.figma, label: 'Figma' },
+    { image: assets.git, label: 'Git' },
+    { image: assets.pytorch_logo, label: 'PyTorch' }
 ];

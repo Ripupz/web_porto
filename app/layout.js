@@ -1,31 +1,30 @@
-import { Outfit,Ovo } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Outfit, Ovo } from "next/font/google";
 import "./globals.css";
-import { SpeedInsights } from "@vercel/speed-insights/next"
-
 
 const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["400","500","600","700"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-outfit",
 });
 
 const ovo = Ovo({
   subsets: ["latin"],
   weight: ["400"],
+  variable: "--font-ovo",
 });
 
 export const metadata = {
-  title: "rafif's portfolio",
-  description: "made with love by rafif",
+  title: "Machine Learning & Product Portfolio",
+  description:
+    "Selected product, machine-learning, and software-engineering case studies.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth ">
-      <body
-        className={`${outfit.className} ${ovo.className} antialiased
-          overflow-x-hidden  `}
-      >
-        <SpeedInsights />
+    <html lang="en" className="scroll-smooth">
+      <body className={`${outfit.variable} ${ovo.variable} antialiased`}>
+        {process.env.VERCEL ? <SpeedInsights /> : null}
         {children}
       </body>
     </html>

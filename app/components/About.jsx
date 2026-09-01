@@ -1,63 +1,97 @@
-import { assets, infoList, toolsData } from '@/assets/assets'
-import Image from 'next/image'
-import React from 'react'
-import { motion } from 'framer-motion'
+"use client";
 
-const About = () => {
+import { assets, toolsData } from "@/assets/assets";
+import { motion } from "framer-motion";
+import Image from "next/image";
+
+export default function About({ profile }) {
+  const info = [
+    {
+      icon: assets.code_icon,
+      title: "Build",
+      description: "Python, JavaScript, TypeScript, Next.js, and mobile development",
+    },
+    {
+      icon: assets.edu_icon,
+      title: "Education",
+      description: profile.university || "University information is set at build time",
+    },
+    {
+      icon: assets.project_icon,
+      title: "Approach",
+      description: "Research the problem, make trade-offs explicit, test, and communicate limits",
+    },
+  ];
+
   return (
-    <div id='about' className='w-full px-[12%] py-10 scroll-mt-20'>
-        <h4 className='text-center mb-2 text-lg font-Ovo'>Introduction</h4>
-        <h2 className='text-center text-5xl font-Ovo'>About Me</h2>
+    <section id="about" className="overflow-hidden scroll-mt-24 px-5 py-20 sm:px-[8%] lg:px-[12%]" aria-labelledby="about-title">
+      <p className="mb-2 text-center text-lg font-Ovo">Introduction</p>
+      <h2 id="about-title" className="text-center text-4xl font-Ovo sm:text-5xl">
+        About my work
+      </h2>
 
-        <div className='flex w-full flex-col lg:flex-row 
-        items-center gap-20 my-20'>
-
-        {/* Image Section */}
+      <div className="my-16 flex min-w-0 flex-col items-center gap-12 lg:flex-row lg:gap-20">
         <motion.div
-          className='w-64 sm:w-80 rounded-3xl max-w-none'
-          initial={{ opacity: 0, x: -100 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, type: 'spring', bounce: 0.4 }}
-          viewport={{ amount: 0.5 }}
-          whileHover={{rotateZ: 20, scale: 1.05}}
+          className="w-64 shrink-0 overflow-hidden rounded-3xl sm:w-80"
+          initial={false}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.35 }}
         >
-            <Image src={assets.user_image} alt='User Image' className='w-full rounded-3xl'/>
+          {profile.aboutImageUrl ? (
+            <Image
+              src={profile.aboutImageUrl}
+              alt="Portfolio owner working on a project"
+              width={960}
+              height={1088}
+              unoptimized
+              className="w-full rounded-3xl object-cover"
+            />
+          ) : (
+            <div className="about-visual-placeholder" role="img" aria-label="Abstract illustration of a research-to-build process">
+              <span>Research</span>
+              <i>→</i>
+              <span>Build</span>
+              <i>→</i>
+              <span>Learn</span>
+            </div>
+          )}
         </motion.div>
 
-        {/* Text Section */}
         <motion.div
-          className='flex-1'
-          initial={{ opacity: 0, x: 25 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, type: 'spring', bounce: 0.4 }}
-          viewport={{ amount: 0.5 }}
+          className="min-w-0 flex-1"
+          initial={false}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.35 }}
         >
-                <p className='mb-10 max-w-2xl font-Ovo'>I’m Rafif, a Machine Learning Developer and Data Scientist based in Indonesia. I specialize in building intelligent systems that turn data into actionable insights, using tools like Python, TensorFlow, and PyTorch.Beyond AI and data science, I enjoy creating clean, functional, and visually appealing web applications that deliver great user experiences.</p>
-            <ul className='grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl'>
-                {infoList.map(({icon, iconDark, title, description},index) => (
-                    <li className='border-[0.5px] border-gray-400 rounded-xl
-                    p-6 cursor-pointer hover-bg-lightHover hover:-translate-y-1 duration-500 hover-shadow-black' key={index}>
-                        <Image src={icon} alt={title} className='w-7 mt-3'/>
-                        <h3 className='my-4 font-semibold text-gray-700'>{title}</h3>
-                        <p className='text-gray-600 text-sm'>{description}</p>
-                    </li>
-                ))}
-            </ul>
+          <p className="mb-8 max-w-3xl text-base leading-7 text-slate-700 font-Ovo sm:text-lg">
+            I work across machine learning and product engineering, using tools
+            such as Python, PyTorch, React Native, and Next.js. Beyond AI and
+            data science, I care about clear interfaces, reliable state, privacy,
+            and honest explanations of what a system can—and cannot—conclude.
+          </p>
 
-                <h4 className='my-6 text-gray-700 font-Ovo'>Tools I use </h4>
-                <ul className='flex items-center gap-3 sm:gap-5'> 
-                    {toolsData.map((tool,index) => (
-                        <li className='flex items-center justify-center w-12 sm:w-14 
-                        aspect-square border border-gray-400 rounded-lg cursor-pointer hover:-translate-y-1 duration-500' key={index}>
-                        <Image src={tool} alt='tool' className='w-5 sm:w-7'/>
-                        </li>
-                    ))}
-                </ul>
+          <ul className="grid max-w-3xl grid-cols-1 gap-5 sm:grid-cols-3">
+            {info.map((item) => (
+              <li key={item.title} className="rounded-2xl border border-slate-300 bg-white p-5 shadow-sm">
+                <Image src={item.icon} alt="" className="mt-1 w-7" />
+                <h3 className="my-3 font-semibold text-slate-800">{item.title}</h3>
+                <p className="text-sm leading-6 text-slate-600">{item.description}</p>
+              </li>
+            ))}
+          </ul>
 
-            </motion.div>
-        </div>
-    </div>
-  )
+          <h3 className="mb-4 mt-7 text-slate-700 font-Ovo">Tools I use</h3>
+          <ul className="flex flex-wrap items-center gap-3 sm:gap-4">
+            {toolsData.map((tool) => (
+              <li className="flex aspect-square w-12 items-center justify-center rounded-xl border border-slate-300 bg-white sm:w-14" key={tool.label} title={tool.label}>
+                <Image src={tool.image} alt={`${tool.label} logo`} className="w-5 sm:w-7" />
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+      </div>
+    </section>
+  );
 }
-
-export default About
